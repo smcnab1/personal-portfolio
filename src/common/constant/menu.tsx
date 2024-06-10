@@ -2,9 +2,7 @@ import { BiRocket as ContactIcon } from 'react-icons/bi';
 import {
   BsEnvelopeAtFill as EmailIcon,
   BsGithub as GithubIcon,
-  BsInstagram as InstagramIcon,
   BsLinkedin as LinkedinIcon,
-  BsTwitter as TwitterIcon,
 } from 'react-icons/bs';
 import {
   FiBookOpen as LearnIcon,
