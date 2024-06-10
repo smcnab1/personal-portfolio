@@ -6,6 +6,7 @@ import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import { useEffect } from 'react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 
 import 'tailwindcss/tailwind.css';
 import 'aos/dist/aos.css';
@@ -50,6 +51,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
       </style>
       <DefaultSeo {...defaultSEOConfig} />
       <SpeedInsights />
+      <Analytics />
       <SessionProvider session={session}>
         <ThemeProvider attribute='class' defaultTheme='dark'>
           <CommandPaletteProvider>
