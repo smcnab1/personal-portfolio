@@ -1,38 +1,38 @@
-const canonicalUrl = 'https://aulianza.id';
-const metaImage = 'https://cloud.aulianza.com/public/images/aulianza-id.png';
+const canonicalUrl = 'https://sammcnab.co.uk';
+const metaImage = 'https://sammcnab.co.uk/my-avatar.png';
 const metaDescription =
-  'Seasoned Software Engineer especially in Frontend side, with a passion for creating pixel-perfect web experiences';
+  'Registered Paramedic, Coach, and Educator. I write about my experiences in healthcare, technology, and education.';
 
 const defaultSEOConfig = {
-  defaultTitle: 'Ryan Aulia - Personal Website',
+  defaultTitle: 'Sam McNab - Personal Website',
   description: metaDescription,
   canonical: canonicalUrl,
   openGraph: {
     canonical: canonicalUrl,
-    title: 'Ryan Aulia - Personal Website',
+    title: 'Sam McNab - Personal Website',
     description: metaDescription,
     type: 'website',
     images: [
       {
         url: metaImage,
-        alt: 'aulianza.id og-image',
+        alt: 'sammcnab.co.uk og-image',
         width: 800,
         height: 600,
       },
       {
         url: metaImage,
-        alt: 'aulianza.id og-image',
+        alt: 'sammcnab.co.uk og-image',
         width: 1200,
         height: 630,
       },
       {
         url: metaImage,
-        alt: 'aulianza.id og-image',
+        alt: 'sammcnab.co.uk og-image',
         width: 1600,
         height: 900,
       },
     ],
-    site_name: 'aulianza.id',
+    site_name: 'sammcnab.co.uk',
   },
   twitter: {
     handle: '@handle',

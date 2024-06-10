@@ -58,7 +58,7 @@ const BlogDetailPage: NextPage<BlogDetailPageProps> = ({ blog }) => {
               url: blogData?.featured_image_url,
             },
           ],
-          siteName: 'aulianza blog',
+          siteName: 'smcnab1 blog',
         }}
       />
       <Container data-aos='fade-up'>

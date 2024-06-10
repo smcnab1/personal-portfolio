@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://aulianza.id',
+  siteUrl: process.env.SITE_URL || 'https://sammcnab.co.uk',
   generateRobotsTxt: true,
 };
