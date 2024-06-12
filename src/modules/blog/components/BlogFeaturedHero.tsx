@@ -87,7 +87,7 @@ const BlogFeaturedHero = ({ data }: BlogFeaturedProps) => {
                 </h3>
               </Link>
               <p className='hidden sm:block'>
-                {formatExcerpt(currentFeatured?.excerpt)}
+                {formatExcerpt(currentFeatured?.excerpt?.rendered, 50)}
               </p>
               <div className='flex gap-x-5 pt-1 text-neutral-400'>
                 <div className='flex items-center gap-1 '>

@@ -2,7 +2,7 @@ import {
   HiOutlineAcademicCap as EducationIcon,
   HiOutlineBookmark as AboutIcon,
   HiOutlineBriefcase as CareerIcon,
-  HiOutlineDocumentText as ResumeIcon,
+  HiOutlineDocumentText as CertIcon,
 } from 'react-icons/hi';
 
 import { Tabs } from '@/common/components/elements/Tabs';
@@ -25,7 +25,7 @@ const About = () => {
     {
       label: (
         <TabLabel>
-          <ResumeIcon size={17} /> Certifications
+          <CertIcon size={17} /> Certifications
         </TabLabel>
       ),
       children: <CertificationList />,

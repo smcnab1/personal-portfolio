@@ -123,7 +123,7 @@ export const getBlogViews = async ({
 
   const data = response.data;
 
-  const findArticle = data?.find((blog: BlogItemProps) => blog.id === id);
+  const findArticle = data?.find((blog: BlogItemProps) => blog.ID === id);
   const page_views_count = findArticle?.page_views_count;
 
   return {

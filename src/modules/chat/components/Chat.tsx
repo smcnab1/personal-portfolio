@@ -72,6 +72,6 @@ const Chat = ({ isWidget = false }: { isWidget?: boolean }) => {
       )}
     </>
   );
-}; 
+};
 
 export default Chat;

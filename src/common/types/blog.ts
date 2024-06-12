@@ -23,20 +23,18 @@ export type TagProps = {
 };
 
 export type BlogItemProps = {
-  id: number;
+  ID: number;
   date: string;
   modified: string;
   slug: string;
   status: string;
   link: string;
-  title: {
-    rendered: string;
-    markdown?: string;
-  };
+  title: string;
   content: {
     rendered: string;
     markdown?: string;
     protected: boolean;
+    text?: string;
   };
   excerpt: {
     rendered: string;
@@ -56,12 +54,12 @@ export type BlogItemProps = {
   tags: number[];
   tags_list: TagProps[];
   amp_enabled: boolean;
-  featured_image_url: string;
+  featured_image: string;
   total_views_count: number;
 };
 
 export type BlogDetailProps = {
-  id: number;
+  ID: number;
   date: string;
   date_gmt: string;
   modified: string;

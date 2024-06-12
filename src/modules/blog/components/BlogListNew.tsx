@@ -126,7 +126,7 @@ const BlogListNew = () => {
             <>
               {blogData.map((item: BlogItemProps, index: number) => (
                 <motion.div
-                  key={item.id}
+                  key={item.ID}
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}

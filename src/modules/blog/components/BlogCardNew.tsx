@@ -36,7 +36,7 @@ const BlogCardNew = ({
 }: BlogCardProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const readingTimeMinutes = calculateReadingTime(content) ?? 0;
+  const readingTimeMinutes = calculateReadingTime(content.rendered) ?? 0;
   const tagList: TagProps[] = Array.isArray(tags_list)
     ? tags_list.slice(0, 3)
     : [];
@@ -96,7 +96,7 @@ const BlogCardNew = ({
               </div>
               {isExcerpt && (
                 <p className='text-sm leading-relaxed text-neutral-400'>
-                  {formatExcerpt(excerpt, 50)}
+                  {formatExcerpt(excerpt.rendered, 50)}
                 </p>
               )}
             </div>
