@@ -9,7 +9,7 @@ const Services = () => {
   return (
     <section className='space-y-5'>
       <div className='space-y-3'>
-        <SectionHeading title="What I've been working on" />
+        <SectionHeading title="What I&apos;ve been working on" />
         <p className='leading-[1.8] text-neutral-800 dark:text-neutral-300 md:leading-loose'>
           I provide healthcare university students with an immersive education. Whilst maintaining my role as a registered Paramedic with the HCPC.
           </p>
@@ -26,8 +26,7 @@ const Services = () => {
           <h3 className='text-xl font-medium'>Lets work together!</h3>
         </div>
         <p className='pl-2 leading-[1.8] text-neutral-800 dark:text-neutral-300 md:leading-loose'>
-          I&apos;m open for freelance projects, feel free to email me to see how
-          we can collaborate.
+          I&apos;m open for freelance projects, feel free to email me to see how we can collaborate.
         </p>
         <Button
           data-umami-event='Click Contact Button'
