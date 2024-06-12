@@ -63,7 +63,7 @@ jobs:
         uses: bahmutov/npm-install@v1
 
       - name: 💅 Prettier check
-        run: yarn format:check
+        run: yarn format:check --write
 
   test:
     name: 🃏 Test
