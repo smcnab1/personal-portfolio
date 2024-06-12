@@ -9,7 +9,7 @@ import { Tabs } from '@/common/components/elements/Tabs';
 
 import CareerList from './CareerList';
 import EducationList from './EducationList';
-import Resume from './Resume';
+import CertificationList from './CertificationList';
 import Story from './Story';
 
 const About = () => {
@@ -25,10 +25,10 @@ const About = () => {
     {
       label: (
         <TabLabel>
-          <ResumeIcon size={17} /> Resume
+          <ResumeIcon size={17} /> Certifications
         </TabLabel>
       ),
-      children: <Resume />,
+      children: <CertificationList />,
     },
     {
       label: (

@@ -61,8 +61,8 @@ const BlogFeaturedHero = ({ data }: BlogFeaturedProps) => {
         }}
       >
         <Image
-          src={currentFeatured?.featured_image_url || defaultImage}
-          alt={currentFeatured?.title?.rendered}
+          src={currentFeatured?.featured_image || defaultImage}
+          alt={currentFeatured?.title}
           fill={true}
           sizes='100vw, 100vh'
           className='h-full w-full transform object-cover transition-transform duration-300'
@@ -79,15 +79,15 @@ const BlogFeaturedHero = ({ data }: BlogFeaturedProps) => {
           <div className='flex flex-col justify-end gap-6'>
             <div className='flex flex-col space-y-2 text-white'>
               <Link
-                href={`/blog/${currentFeatured?.slug}?id=${currentFeatured?.id}`}
+                href={`/blog/${currentFeatured?.slug}?id=${currentFeatured?.ID}`}
               >
                 <h3 className='group relative flex w-fit cursor-pointer  text-2xl font-bold leading-normal'>
-                  {currentFeatured?.title?.rendered}
+                  {currentFeatured?.title}
                   <span className='absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-white transition-transform group-hover:scale-x-100'></span>
                 </h3>
               </Link>
               <p className='hidden sm:block'>
-                {formatExcerpt(currentFeatured?.excerpt?.rendered)}
+                {formatExcerpt(currentFeatured?.excerpt)}
               </p>
               <div className='flex gap-x-5 pt-1 text-neutral-400'>
                 <div className='flex items-center gap-1 '>
@@ -126,7 +126,7 @@ const BlogFeaturedHero = ({ data }: BlogFeaturedProps) => {
         <div className='hidden flex-col items-center justify-center space-y-5 border-l border-solid border-[#ffffff1a] px-8 sm:flex'>
           {featuredData?.map((item, index: number) => (
             <button
-              key={item.id}
+              key={item.ID}
               onClick={() => setCurrentFeaturedIndex(index)}
               className={clsx(
                 'relative mb-2 h-16 w-16 cursor-pointer overflow-hidden border-2 bg-black transition-all duration-300 hover:scale-105',
@@ -135,8 +135,8 @@ const BlogFeaturedHero = ({ data }: BlogFeaturedProps) => {
               style={{ borderRadius: '50%' }}
             >
               <Image
-                src={item.featured_image_url || defaultImage}
-                alt={item?.title?.rendered}
+                src={item.featured_image || defaultImage}
+                alt={item?.title}
                 fill={true}
                 sizes='100vw, 100vh'
                 className='object-cover'

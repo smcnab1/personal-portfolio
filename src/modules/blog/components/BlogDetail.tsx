@@ -9,7 +9,7 @@ import { fetcher } from '@/services/fetcher';
 import BlogHeader from './BlogHeader';
 
 const BlogDetail = ({
-  id,
+  ID,
   title,
   date,
   slug,
@@ -17,7 +17,7 @@ const BlogDetail = ({
   tags_list,
 }: BlogDetailProps) => {
   const { data: viewsData } = useSWR(
-    `/api/views?slug=${slug}&id=${id}`,
+    `/api/views?slug=${slug}&id=${ID}`,
     fetcher,
   );
 
@@ -29,14 +29,14 @@ const BlogDetail = ({
   return (
     <>
       <BlogHeader
-        title={title?.rendered}
+        title={title}
         comments_count={0}
         reading_time_minutes={readingTimeMinutes}
         published_at={date}
         page_views_count={viewsCount}
       />
       <div className='space-y-6 leading-[1.8] dark:text-neutral-300 '>
-        {content?.rendered && <MDXComponent>{content?.markdown}</MDXComponent>}
+        {content?.rendered && <MDXComponent>{content?.rendered}</MDXComponent>}
       </div>
       {tagList?.length >= 1 && (
         <div className='my-10 space-y-2'>

@@ -15,32 +15,32 @@ const iconClassName = 'w-auto text-neutral-700 dark:text-neutral-300';
 export const PAIR_DEVICES: Record<string, DeviceInfoProps> = {
   Computer: {
     icon: <BsLaptop className={iconClassName} size={iconSize} />,
-    model: 'MacBook Pro M1',
-    id: 'aulianza-mac',
+    model: 'MacBook Air M2',
+    id: 'smcnab1-mac',
   },
   Smartphone: {
     icon: <BsPhone className={iconClassName} size={iconSize} />,
-    model: 'iPhone 13 Pro',
-    id: 'aulianza-iphone',
+    model: 'iPhone 15 Pro Max',
+    id: 'smcnab1-iphone',
   },
   Tablet: {
     icon: <BsTablet className={iconClassName} size={iconSize} />,
-    model: 'iPad Mini 6',
-    id: 'aulianza-ipad',
+    model: 'iPad Pro 12.9" M2',
+    id: 'smcnab1-ipad',
   },
   Smartwatch: {
     icon: <BsSmartwatch className={iconClassName} size={iconSize} />,
-    model: 'Apple Watch Series 7',
-    id: 'aulianza-iwatch',
+    model: 'Apple Watch Series 8',
+    id: 'smcnab1-iwatch',
   },
   Speaker: {
     icon: <BsSpeaker className={iconClassName} size={iconSize} />,
-    model: 'Sony',
-    id: 'aulianza-speaker',
+    model: 'HomePod Mini 2',
+    id: 'smcnab1-speaker',
   },
   TV: {
     icon: <BsTv className={iconClassName} size={iconSize} />,
-    model: 'Android TV',
-    id: 'aulianza-tv',
+    model: 'Apple TV 4K M2',
+    id: 'smcnab1-tv',
   },
 };

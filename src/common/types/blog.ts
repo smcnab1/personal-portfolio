@@ -9,6 +9,19 @@ export type UserProps = {
   profile_image_90: string;
 };
 
+export type TagProps = {
+  term_id: number;
+  name: string;
+  slug: string;
+  term_group: number;
+  term_taxonomy_id: number;
+  taxonomy: string;
+  description: string;
+  parent: number;
+  count: number;
+  filter: string;
+};
+
 export type BlogItemProps = {
   id: number;
   date: string;
@@ -18,10 +31,11 @@ export type BlogItemProps = {
   link: string;
   title: {
     rendered: string;
+    markdown?: string;
   };
   content: {
     rendered: string;
-    markdown: string;
+    markdown?: string;
     protected: boolean;
   };
   excerpt: {
@@ -36,22 +50,11 @@ export type BlogItemProps = {
   template: string;
   format: string;
   meta: {
-    footnotes: string;
+    footnotes?: string;
   };
   categories: number[];
   tags: number[];
-  tags_list: {
-    term_id: number;
-    name: string;
-    slug: string;
-    term_group: number;
-    term_taxonomy_id: number;
-    taxonomy: string;
-    description: string;
-    parent: number;
-    count: number;
-    filter: string;
-  }[];
+  tags_list: TagProps[];
   amp_enabled: boolean;
   featured_image_url: string;
   total_views_count: number;
@@ -69,10 +72,11 @@ export type BlogDetailProps = {
   link: string;
   title: {
     rendered: string;
+    markdown?: string;
   };
   content: {
     rendered: string;
-    markdown: string;
+    markdown?: string;
     protected: boolean;
   };
   excerpt: {
@@ -87,55 +91,44 @@ export type BlogDetailProps = {
   template: string;
   format: string;
   meta: {
-    footnotes: string;
+    footnotes?: string;
   };
   categories: number[];
   tags: number[];
-  tags_list: {
-    term_id: number;
-    name: string;
-    slug: string;
-    term_group: number;
-    term_taxonomy_id: number;
-    taxonomy: string;
-    description: string;
-    parent: number;
-    count: number;
-    filter: string;
-  }[];
+  tags_list: TagProps[];
   amp_enabled: boolean;
   featured_image_url: string;
   guid: {
     rendered: string;
   };
-  replies: {
-    embeddable: true;
+  replies?: {
+    embeddable: boolean;
     href: string;
   };
-  version_history: {
+  version_history?: {
     count: number;
     href: string;
   };
-  predecessor_version: {
+  predecessor_version?: {
     id: number;
     href: string;
   };
-  wp_featuredmedia: {
-    embeddable: true;
+  wp_featuredmedia?: {
+    embeddable: boolean;
     href: string;
   };
-  wp_attachment: {
+  wp_attachment?: {
     href: string;
   };
-  wp_term: {
+  wp_term?: {
     taxonomy: string;
-    embeddable: true;
+    embeddable: boolean;
     href: string;
   }[];
-  curies: {
+  curies?: {
     name: string;
     href: string;
-    templated: true;
+    templated: boolean;
   }[];
   total_views_count: number;
 };
@@ -154,5 +147,5 @@ export type CommentItemProps = {
   created_at: string;
   body_html: string;
   user: UserProps;
-  children: Comment[];
+  children: CommentItemProps[];
 };

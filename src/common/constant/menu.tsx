@@ -13,6 +13,7 @@ import {
   FiRss as BlogIcon,
   FiUser as ProfileIcon,
 } from 'react-icons/fi';
+import { SiOrcid as ORCIDIcon } from 'react-icons/si';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
 import { SiJavascript } from 'react-icons/si';
 
@@ -48,15 +49,15 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Projects',
     type: 'Pages',
   },
-  {
-    title: 'Blog',
-    href: '/blog',
-    icon: <BlogIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Blog',
-    type: 'Pages',
-  },
+  //  {
+  //    title: 'Blog',
+  //    href: '/blog',
+  //    icon: <BlogIcon size={iconSize} />,
+  //    isShow: true,
+  //    isExternal: false,
+  //    eventName: 'Pages: Blog',
+  //    type: 'Pages',
+  //  },
   {
     title: 'Learn',
     href: '/learn',
@@ -136,6 +137,16 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
     isShow: true,
     isExternal: true,
     eventName: 'Social: Github',
+    className: '!bg-black border border dark:border-neutral-700',
+    type: 'Link',
+  },
+  {
+    title: 'ORCID',
+    href: 'https://orcid.org/0009-0009-4568-9853',
+    icon: <ORCIDIcon size={iconSize} />,
+    isShow: true,
+    isExternal: true,
+    eventName: 'Social: ORCID',
     className: '!bg-black border border dark:border-neutral-700',
     type: 'Link',
   },

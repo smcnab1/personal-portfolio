@@ -16,16 +16,16 @@ import {
   formatDate,
   formatExcerpt,
 } from '@/common/helpers';
-import { BlogItemProps } from '@/common/types/blog';
+import { BlogItemProps, TagProps } from '@/common/types/blog';
 
 interface BlogCardProps extends BlogItemProps {
   isExcerpt?: boolean;
 }
 
 const BlogCardNew = ({
-  id,
+  ID,
   title,
-  featured_image_url,
+  featured_image,
   date,
   slug,
   content,
@@ -36,8 +36,10 @@ const BlogCardNew = ({
 }: BlogCardProps) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
 
-  const readingTimeMinutes = calculateReadingTime(content?.rendered) ?? 0;
-  const tagList = tags_list || [];
+  const readingTimeMinutes = calculateReadingTime(content) ?? 0;
+  const tagList: TagProps[] = Array.isArray(tags_list)
+    ? tags_list.slice(0, 3)
+    : [];
 
   const defaultImage = '/images/placeholder.png';
 
@@ -47,7 +49,7 @@ const BlogCardNew = ({
   };
 
   return (
-    <Link href={`/blog/${slug}?id=${id}`}>
+    <Link href={`/blog/${slug}?id=${ID}`}>
       <Card
         className='group relative flex h-[400px] w-full flex-col rounded-lg border shadow-sm dark:border-neutral-800'
         onMouseEnter={() => setIsHovered(true)}
@@ -61,8 +63,8 @@ const BlogCardNew = ({
           }}
         >
           <Image
-            src={featured_image_url || defaultImage}
-            alt={title?.rendered}
+            src={featured_image || defaultImage}
+            alt={title}
             fill={true}
             sizes='100vw, 100vh'
             className='h-full w-full transform object-cover object-left transition-transform duration-300 group-hover:scale-105 group-hover:blur-sm'
@@ -72,13 +74,13 @@ const BlogCardNew = ({
 
         <div className='absolute flex h-full flex-col justify-between space-y-4 p-5'>
           <div className='flex flex-wrap gap-2'>
-            {tagList?.map((tag) => (
+            {tagList.map((tag) => (
               <div
-                key={tag?.term_id}
+                key={tag.term_id}
                 className='rounded-full bg-neutral-900/50 px-2.5 py-1 font-mono text-xs text-neutral-400'
               >
                 <span className='mr-1 font-semibold'>#</span>
-                {tag?.name.charAt(0).toUpperCase() + tag?.name.slice(1)}
+                {tag.name.charAt(0).toUpperCase() + tag.name.slice(1)}
               </div>
             ))}
           </div>
@@ -86,7 +88,7 @@ const BlogCardNew = ({
           <div className='flex flex-col justify-end'>
             <div className='flex flex-col space-y-3'>
               <h3 className=' text-lg font-medium text-neutral-100 group-hover:underline group-hover:underline-offset-4 '>
-                {title?.rendered}
+                {title}
               </h3>
               <div className='flex items-center gap-1 text-neutral-400'>
                 <DateIcon size={14} />
@@ -94,16 +96,16 @@ const BlogCardNew = ({
               </div>
               {isExcerpt && (
                 <p className='text-sm leading-relaxed text-neutral-400'>
-                  {formatExcerpt(excerpt?.rendered)}
+                  {formatExcerpt(excerpt, 50)}
                 </p>
               )}
             </div>
             <Breakline className='!border-neutral-700' />
             <div className='flex justify-between gap-4 px-0.5 text-neutral-400'>
-              <Tooltip title='by aulianza'>
+              <Tooltip title='by smcnab1'>
                 <Image
-                  src='/images/aulianza-new.png'
-                  alt='Ryan Aulia'
+                  src='/images/my-avatar.png'
+                  alt='Sam McNab'
                   width={25}
                   height={25}
                   rounded='rounded-full'
@@ -123,7 +125,7 @@ const BlogCardNew = ({
                 <div className='flex items-center gap-1'>
                   <ViewIcon size={14} />
                   <span className='ml-0.5 text-xs font-medium'>
-                    {total_views_count.toLocaleString()} VIEWS
+                    {total_views_count?.toLocaleString()} VIEWS
                   </span>
                 </div>
                 <div className='flex items-center gap-1'>

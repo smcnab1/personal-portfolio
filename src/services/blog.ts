@@ -38,12 +38,14 @@ const extractData = (
   categories: number;
 } => {
   const { headers, data } = response;
+  console.log('Response Headers:', headers);
+  console.log('Response Data:', data);
   return {
-    posts: data,
+    posts: data.posts,
     page: response?.config?.params?.page || 1,
     per_page: response?.config?.params?.per_page || 6,
     total_pages: Number(headers['x-wp-totalpages']) || 0,
-    total_posts: Number(headers['x-wp-total']) || 0,
+    total_posts: data.found || 0,
     categories: response?.config?.params?.categories,
   };
 };
@@ -56,9 +58,12 @@ export const getBlogList = async ({
 }: BlogParamsProps): Promise<{ status: number; data: any }> => {
   try {
     const params = { page, per_page, categories, search };
-    const response = await axios.get(`${BLOG_URL}posts`, { params });
+    console.log('Fetching blog list with params:', params);
+    const response = await axios.get(`${BLOG_URL}posts/`, { params });
+    console.log('Blog list response:', response);
     return { status: response?.status, data: extractData(response) };
   } catch (error) {
+    console.error('Error fetching blog list:', error);
     return handleAxiosError(error as AxiosError<any>);
   }
 };
@@ -67,9 +72,12 @@ export const getBlogDetail = async (
   id: number,
 ): Promise<BlogDetailResponseProps> => {
   try {
+    console.log(`Fetching blog detail for post ID: ${id}`);
     const response = await axios.get(`${BLOG_URL}posts/${id}`);
+    console.log('Blog detail response:', response);
     return { status: response?.status, data: response?.data };
   } catch (error) {
+    console.error('Error fetching blog detail:', error);
     return handleAxiosError(error as AxiosError<any>);
   }
 };

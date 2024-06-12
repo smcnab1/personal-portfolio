@@ -1,1 +1,1 @@
-export const CLIENT_IMAGES = ['/images/clients/blank.png'];
+export const CLIENT_IMAGES = ['/images/clients/teammedic_logo.png'];
