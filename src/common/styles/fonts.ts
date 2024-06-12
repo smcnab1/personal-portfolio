@@ -23,6 +23,7 @@ export const soraSans = Sora({
 export const onestSans = Onest({
   variable: '--onestSans-font',
   subsets: ['latin'],
-  display: 'fallback',
+  display: 'swap',
   weight: ['300', '400', '500', '600', '700', '800'],
+  adjustFontFallback: false,
 });
