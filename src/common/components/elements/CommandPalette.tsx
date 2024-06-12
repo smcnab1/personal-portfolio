@@ -129,7 +129,7 @@ const CommandPalette = () => {
 
   const handleFindGoogle = () => {
     const url =
-      'https://www.google.com/search?q=' + queryDebounce + '&ref=aulianza.id';
+      'https://www.google.com/search?q=' + queryDebounce + '&ref=smcnab1';
     window.open(url, '_blank');
   };
 

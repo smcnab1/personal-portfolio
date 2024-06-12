@@ -6,7 +6,7 @@ export const LEARN_CONTENTS: ContentProps[] = [
   //    title: 'JavasScript Fundamental',
   //    slug: 'js-fundamental',
   //    description: 'Master the fundamentals of programming in JavaScript.',
-  //    image: 'https://cloud.aulianza.com/public/images/learn/javascript.webp',
+  //    image: '',
   //    is_new: true,
   //    level: 'Beginner',
   //    is_show: true,
