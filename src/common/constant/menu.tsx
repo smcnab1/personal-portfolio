@@ -153,13 +153,13 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
 ];
 
 export const EXTERNAL_LINKS: MenuItemProps[] = [
-  {
-    title: 'Analytics',
-    href: 'https://cloud.umami.is/share/5D90cQzHemLveqQr/sammcnab.co.uk',
-    icon: <AnalyticsIcon size={iconSize} />,
-    isShow: true,
-    isExternal: true,
-    eventName: 'External Link: Analytics',
-    type: 'Link',
-  },
+  //  {
+  //    title: 'Analytics',
+  //    href: 'https://cloud.umami.is/share/5D90cQzHemLveqQr/sammcnab.co.uk',
+  //    icon: <AnalyticsIcon size={iconSize} />,
+  //    isShow: true,
+  //    isExternal: true,
+  //    eventName: 'External Link: Analytics',
+  //    type: 'Link',
+  //  },
 ];
