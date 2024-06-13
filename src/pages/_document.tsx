@@ -4,12 +4,6 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head>
-        <script
-          async
-          defer
-          src='https://cloud.umami.is/script.js'
-          data-website-id='1965bf63-d47b-4b18-bf59-e4f8af2c1723'
-        ></script>
         <link
           rel='apple-touch-icon'
           sizes='180x180'
