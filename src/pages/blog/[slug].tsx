@@ -24,7 +24,7 @@ interface BlogDetailPageProps {
 const BlogDetailPage: NextPage<BlogDetailPageProps> = ({ blog }) => {
   const blogData = blog?.data || {};
 
-  const slug = `blog/${blogData?.slug}?id=${blogData?.ID}`;
+  const slug = `blog/${blogData?.slug}?id=${blogData?.id}`;
   const canonicalUrl = `https://sammcnab.co.uk/${slug}`;
   const description = formatExcerpt(blogData?.excerpt?.rendered);
 

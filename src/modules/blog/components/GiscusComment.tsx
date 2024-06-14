@@ -12,9 +12,9 @@ const GiscusComment = ({ isEnableReaction = false }: GiscusComment) => {
     <div className='mb-2 mt-5'>
       <Giscus
         repo='smcnab1/personal-portfolio'
-        repoId='R_kgDOJoIhfQ'
+        repoId='R_kgDOMHkHcw'
         category='General'
-        categoryId='DIC_kwDOJoIhfc4CW6cJ'
+        categoryId='DIC_kwDOMHkHc84CgFzW'
         mapping='pathname'
         reactionsEnabled={isEnableReaction ? '1' : '0'}
         emitMetadata='1'

@@ -39,11 +39,11 @@ const extractData = (
 } => {
   const { headers, data } = response;
   return {
-    posts: data.posts,
+    posts: data,
     page: response?.config?.params?.page || 1,
     per_page: response?.config?.params?.per_page || 6,
     total_pages: Number(headers['x-wp-totalpages']) || 0,
-    total_posts: data.found || 0,
+    total_posts: Number(headers['x-wp-total']) || 0,
     categories: response?.config?.params?.categories,
   };
 };
@@ -56,7 +56,7 @@ export const getBlogList = async ({
 }: BlogParamsProps): Promise<{ status: number; data: any }> => {
   try {
     const params = { page, per_page, categories, search };
-    const response = await axios.get(`${BLOG_URL}posts/`, { params });
+    const response = await axios.get(`${BLOG_URL}posts`, { params });
     return { status: response?.status, data: extractData(response) };
   } catch (error) {
     return handleAxiosError(error as AxiosError<any>);
