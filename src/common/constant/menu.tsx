@@ -12,6 +12,8 @@ import {
   FiPocket as HomeIcon,
   FiRss as BlogIcon,
   FiUser as ProfileIcon,
+  FiBriefcase as LegalIcon,
+  FiBook as BackIcon,
 } from 'react-icons/fi';
 import { SiOrcid as ORCIDIcon } from 'react-icons/si';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
@@ -49,15 +51,15 @@ export const MENU_ITEMS: MenuItemProps[] = [
   //    eventName: 'Pages: Projects',
   //    type: 'Pages',
   //  },
-    {
-      title: 'Blog',
-      href: '/blog',
-      icon: <BlogIcon size={iconSize} />,
-      isShow: true,
-      isExternal: false,
-      eventName: 'Pages: Blog',
-      type: 'Pages',
-    },
+  {
+    title: 'Blog',
+    href: '/blog',
+    icon: <BlogIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: 'Pages: Blog',
+    type: 'Pages',
+  },
   //  {
   //    title: 'Learn',
   //    href: '/learn',
@@ -92,6 +94,15 @@ export const MENU_ITEMS: MenuItemProps[] = [
     isShow: true,
     isExternal: false,
     eventName: 'Pages: Chat',
+    type: 'Pages',
+  },
+  {
+    title: 'Back Matter',
+    href: '/legal',
+    icon: <LegalIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: 'Pages: Back Matter',
     type: 'Pages',
   },
 ];
