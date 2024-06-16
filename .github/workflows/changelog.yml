@@ -2,6 +2,9 @@ name: Generate changelog
 on:
   release:
     types: [created, edited]
+  push:
+    branches: [$default-branch]
+  workflow_dispatch:
 
 jobs:
   generate-changelog:
@@ -12,7 +15,6 @@ jobs:
         fetch-depth: 0
     - uses: BobAnkh/auto-generate-changelog@v1.2.5
       with:
-        REPO_NAME: 'smcnab1/personal-portfolio'
         ACCESS_TOKEN: ${{secrets.GITHUB_TOKEN}}
         PATH: 'CHANGELOG.md'
         COMMIT_MESSAGE: 'docs(CHANGELOG): update release notes'
