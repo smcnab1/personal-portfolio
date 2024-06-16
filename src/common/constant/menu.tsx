@@ -5,19 +5,14 @@ import {
   BsLinkedin as LinkedinIcon,
 } from 'react-icons/bs';
 import {
-  FiBookOpen as LearnIcon,
-  FiCoffee as ProjectIcon,
   FiCpu as DashboardIcon,
-  FiPieChart as AnalyticsIcon,
   FiPocket as HomeIcon,
   FiRss as BlogIcon,
   FiUser as ProfileIcon,
   FiBriefcase as LegalIcon,
-  FiBook as BackIcon,
 } from 'react-icons/fi';
 import { SiOrcid as ORCIDIcon } from 'react-icons/si';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
-import { SiJavascript } from 'react-icons/si';
 
 import { MenuItemProps } from '../types/menu';
 
@@ -42,15 +37,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Dashboard',
     type: 'Pages',
   },
-  //  {
-  //    title: 'Projects',
-  //    href: '/projects',
-  //    icon: <ProjectIcon size={iconSize} />,
-  //    isShow: true,
-  //    isExternal: false,
-  //    eventName: 'Pages: Projects',
-  //    type: 'Pages',
-  //  },
   {
     title: 'Blog',
     href: '/blog',
@@ -60,15 +46,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Blog',
     type: 'Pages',
   },
-  //  {
-  //    title: 'Learn',
-  //    href: '/learn',
-  //    icon: <LearnIcon size={iconSize} />,
-  //    isShow: true,
-  //    isExternal: false,
-  //    eventName: 'Pages: Learn',
-  //    type: 'Pages',
-  //  },
   {
     title: 'About',
     href: '/about',
@@ -108,15 +85,7 @@ export const MENU_ITEMS: MenuItemProps[] = [
 ];
 
 export const MENU_APPS: MenuItemProps[] = [
-  {
-    title: 'JS Playground',
-    href: '/playground',
-    icon: <SiJavascript size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Playground',
-    type: 'Pages',
-  },
+
 ];
 
 export const SOCIAL_MEDIA: MenuItemProps[] = [
@@ -164,13 +133,5 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
 ];
 
 export const EXTERNAL_LINKS: MenuItemProps[] = [
-  //  {
-  //    title: 'Analytics',
-  //    href: 'https://cloud.umami.is/share/5D90cQzHemLveqQr/sammcnab.co.uk',
-  //    icon: <AnalyticsIcon size={iconSize} />,
-  //    isShow: true,
-  //    isExternal: true,
-  //    eventName: 'External Link: Analytics',
-  //    type: 'Link',
-  //  },
+
 ];
