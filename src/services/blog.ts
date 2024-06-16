@@ -57,7 +57,6 @@ export const getBlogList = async ({
   try {
     const params = { page, per_page, categories, search };
     const response = await axios.get(`${BLOG_URL}posts`, { params });
-    console.log('Blog List:', response);
     return { status: response?.status, data: extractData(response) };
   } catch (error) {
     return handleAxiosError(error as AxiosError<any>);
@@ -69,7 +68,6 @@ export const getBlogDetail = async (
 ): Promise<BlogDetailResponseProps> => {
   try {
     const response = await axios.get(`${BLOG_URL}posts/${id}`);
-    console.log('Blog Detail:', response);
     return { status: response?.status, data: response?.data };
   } catch (error) {
     return handleAxiosError(error as AxiosError<any>);
