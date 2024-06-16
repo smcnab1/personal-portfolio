@@ -12,39 +12,35 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/smcnab1/project-template-repo">
-    <img src="images/avatar.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/smcnab1/personal-portfolio">
+    <img src="public/images/my-avatar.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Project Template Repo</h3>
+<h3 align="center">Personal Portfolio</h3>
 
   <p align="center">
-    Jumpstart your development with this versatile template. 🚀📁
+    Personal Portfolio outlining my experience and current projects 🌐 💻
     <br />
-    <a href="https://smcnab1.github.io/project-template-repo/"><strong>Explore the docs »</strong></a>
+    <a href="https://smcnab1.github.io/personal-portfolio/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/smcnab1/project-template-repo">View Demo</a>
+    <a href="https://sammcnab.co.uk">View Site</a>
     ·
-    <a href="https://github.com/smcnab1/project-template-repo/issues">Report Bug</a>
+    <a href="https://github.com/smcnab1/personal-portfolio/issues">Report Bug</a>
     ·
-    <a href="https://github.com/smcnab1/project-template-repo/issues">Request Feature</a>
+    <a href="https://github.com/smcnab1/personal-portfolio/issues">Request Feature</a>
   </p>
 </div>
 
 <details>
   <summary>View Contents</summary>
 
-_Last Updated DATE_
+_Last Updated 16 June 2024_
 <!-- toc -->
 
 - [About The Project](#about-the-project)
   - [Features](#features)
   - [Built with](#built-with)
-- [Getting started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
 - [Back Matter](#back-matter)
   - [Roadmap](#roadmap)
   - [Contributing](#contributing)
@@ -57,71 +53,26 @@ _Last Updated DATE_
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 <div align="center">
-  <a href="https://github.com/smcnab1/project-template-repo">
-    <img src="images/screenshot.png" alt="Logo" width="100%" height="auto">
+  <a href="https://github.com/smcnab1/personal-portfolio">
+    <img src="https://i.imgur.com/JxSX3JT.png" alt="Logo" width="100%" height="auto">
   </a>
   </div>
   
-This repository can be used as a template to load your new repository with ease. Including the following features to save your time in generating new repositories.
+This repository serves as the boilerplate for my personal portfolio which is hosted on Vercel.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Features
 
-- Auto-Update Documentation Links with current repo name
-- Update Email Addresses: CODE_OF_CONDUCT, SECURITY.
-- Download files & folders from another GitHub Repo
-- Generate Markdown styled index file with SEO details
-- Generate Table of Contents into README
-- Several files already created for you as a template
+- Dashboard with Wakatime API
+- Now Playing with Spotify API
+- Blog using WordPress
 
 ### Built with
 
-- Markdown
-- Python
-- GitHub Actions
-- Shell
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Getting started
-
-### Prerequisites
-
-Accessible using browser or GitHub mobile application.
-
-### Install
-
-1. Click on [use template](https://github.com/new?template_name=project-template-repo&template_owner=smcnab1) to generate new repository from template.
-
-2. Enter repository name and Description.
-
-3. Generate new repository.
-
-4. Navigate to **Settings > Actions > General** and set ***Workflow Permissions*** to _Read and write permissions_
-
-### Usage
-
-- Repository Link Updater
-    - WIP
-
-- License Date Updater
-    - WIP
-
-- Code of Conduct Email Updater
-    - WIP
-
-- Security Policy Email Updater
-    - WIP
-
-- Table of Contents Generator
-    - WIP
-
-- Index File Generator
-    - WIP
-
-- Combinations
-    - WIP
+- TypeScript
+- MDX
+- JavaScript
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -131,10 +82,8 @@ Accessible using browser or GitHub mobile application.
 ### Roadmap
 
 - [ ] Finalise Documentation.
-- [ ] Remove need for config file, all set within Actions.
-- [ ] Combination Selection instead of individual options.
 
-See the [open issues](https://github.com/smcnab1/project-template-repo/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/smcnab1/personal-portfolio/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -163,19 +112,18 @@ This project is licensed under the [MIT License](LICENSE.md).
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/smcnab1/project-template-repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/smcnab1/project-template-repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/smcnab1/project-template-repo.svg?style=for-the-badge
-[forks-url]: https://github.com/smcnab1/project-template-repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/smcnab1/project-template-repo.svg?style=for-the-badge
-[stars-url]: https://github.com/smcnab1/project-template-repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/smcnab1/project-template-repo.svg?style=for-the-badge
-[issues-url]: https://github.com/smcnab1/project-template-repo/issues
-[license-shield]: https://img.shields.io/github/license/smcnab1/project-template-repo.svg?style=for-the-badge
-[license-url]: https://github.com/smcnab1/project-template-repo/blob/master/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/smcnab1/personal-portfolio.svg?style=for-the-badge
+[contributors-url]: https://github.com/smcnab1/personal-portfolio/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/smcnab1/personal-portfolio.svg?style=for-the-badge
+[forks-url]: https://github.com/smcnab1/personal-portfolio/network/members
+[stars-shield]: https://img.shields.io/github/stars/smcnab1/personal-portfolio.svg?style=for-the-badge
+[stars-url]: https://github.com/smcnab1/personal-portfolio/stargazers
+[issues-shield]: https://img.shields.io/github/issues/smcnab1/personal-portfolio.svg?style=for-the-badge
+[issues-url]: https://github.com/smcnab1/personal-portfolio/issues
+[license-shield]: https://img.shields.io/github/license/smcnab1/personal-portfolio.svg?style=for-the-badge
+[license-url]: https://github.com/smcnab1/personal-portfolio/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/sammcnab/
-[product-screenshot]: images/screenshot.png
 [email-badge]: https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white
 [email-url]: mailto:sam@sammcnab.co.uk
 [git-badge]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
