@@ -10,6 +10,7 @@ import {
   FiRss as BlogIcon,
   FiUser as ProfileIcon,
   FiBriefcase as LegalIcon,
+  FiPieChart as AnalyticsIcon,
 } from 'react-icons/fi';
 import { SiOrcid as ORCIDIcon } from 'react-icons/si';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
@@ -133,5 +134,13 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
 ];
 
 export const EXTERNAL_LINKS: MenuItemProps[] = [
-
+    {
+      title: 'Analytics',
+      href: 'https://analytics.sammcnab.co.uk/share/1jaYuaR4rKDNomDN/sammcnab.co.uk',
+      icon: <AnalyticsIcon size={iconSize} />,
+      isShow: true,
+      isExternal: true,
+      eventName: 'External Link: Analytics',
+      type: 'Link',
+    },
 ];
