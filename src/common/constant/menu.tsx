@@ -5,6 +5,7 @@ import {
   BsLinkedin as LinkedinIcon,
 } from 'react-icons/bs';
 import {
+  FiBookOpen as LearnIcon,
   FiCoffee as ProjectIcon,
   FiCpu as DashboardIcon,
   FiPieChart as AnalyticsIcon,
@@ -13,9 +14,8 @@ import {
   FiUser as ProfileIcon,
   FiBriefcase as LegalIcon,
 } from 'react-icons/fi';
-import { SiOrcid as ORCIDIcon } from 'react-icons/si';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
-import { SiJavascript } from 'react-icons/si';
+import { SiJavascript, SiOrcid } from 'react-icons/si';
 
 import { MenuItemProps } from '../types/menu';
 
@@ -56,6 +56,15 @@ export const MENU_ITEMS: MenuItemProps[] = [
     isShow: true,
     isExternal: false,
     eventName: 'Pages: Blog',
+    type: 'Pages',
+  },
+  {
+    title: 'Learn',
+    href: '/learn',
+    icon: <LearnIcon size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: 'Pages: Learn',
     type: 'Pages',
   },
   {
@@ -143,7 +152,7 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
   {
     title: 'ORCID',
     href: 'https://orcid.org/0009-0009-4568-9853',
-    icon: <ORCIDIcon size={iconSize} />,
+    icon: <SiOrcid size={iconSize} />,
     isShow: true,
     isExternal: true,
     eventName: 'Social: ORCID',
