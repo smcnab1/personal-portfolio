@@ -36,12 +36,12 @@ const LearnContentPage: NextPage<ContentPageProps> = ({
     (a, b) => a.frontMatter.id - b.frontMatter.id,
   );
 
-  const canonicalUrl = `https://aulianza.id/learn/${content?.slug}`;
+  const canonicalUrl = `https://sammcnab.co.uk/learn/${content?.slug}`;
 
   return (
     <>
       <NextSeo
-        title={`Learn ${title} - Ryan Aulia`}
+        title={`Learn ${title} - Sam McNab`}
         description={description}
         canonical={canonicalUrl}
         openGraph={{
@@ -51,7 +51,7 @@ const LearnContentPage: NextPage<ContentPageProps> = ({
               url: content?.image,
             },
           ],
-          siteName: 'Ryan Aulia',
+          siteName: 'Sam McNab',
         }}
       />
       <Container data-aos='fade-up'>
