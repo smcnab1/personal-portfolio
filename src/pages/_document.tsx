@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html lang='en'>
       <Head>
+      <script defer src="https://analytics.sammcnab.co.uk/script.js" data-website-id="1a6c9787-c8c3-4ba4-b37e-0b698e687f1d"></script>
         <link
           rel='apple-touch-icon'
           sizes='180x180'

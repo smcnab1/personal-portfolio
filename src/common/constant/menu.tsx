@@ -5,7 +5,6 @@ import {
   BsLinkedin as LinkedinIcon,
 } from 'react-icons/bs';
 import {
-  FiBookOpen as LearnIcon,
   FiCoffee as ProjectIcon,
   FiCpu as DashboardIcon,
   FiPieChart as AnalyticsIcon,
@@ -13,7 +12,6 @@ import {
   FiRss as BlogIcon,
   FiUser as ProfileIcon,
   FiBriefcase as LegalIcon,
-  FiBook as BackIcon,
 } from 'react-icons/fi';
 import { SiOrcid as ORCIDIcon } from 'react-icons/si';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
@@ -42,15 +40,15 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Dashboard',
     type: 'Pages',
   },
-  //  {
-  //    title: 'Projects',
-  //    href: '/projects',
-  //    icon: <ProjectIcon size={iconSize} />,
-  //    isShow: true,
-  //    isExternal: false,
-  //    eventName: 'Pages: Projects',
-  //    type: 'Pages',
-  //  },
+    {
+      title: 'Projects',
+      href: '/projects',
+      icon: <ProjectIcon size={iconSize} />,
+      isShow: true,
+      isExternal: false,
+      eventName: 'Pages: Projects',
+      type: 'Pages',
+    },
   {
     title: 'Blog',
     href: '/blog',
@@ -60,15 +58,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Blog',
     type: 'Pages',
   },
-  //  {
-  //    title: 'Learn',
-  //    href: '/learn',
-  //    icon: <LearnIcon size={iconSize} />,
-  //    isShow: true,
-  //    isExternal: false,
-  //    eventName: 'Pages: Learn',
-  //    type: 'Pages',
-  //  },
   {
     title: 'About',
     href: '/about',
@@ -164,13 +153,13 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
 ];
 
 export const EXTERNAL_LINKS: MenuItemProps[] = [
-  //  {
-  //    title: 'Analytics',
-  //    href: 'https://cloud.umami.is/share/5D90cQzHemLveqQr/sammcnab.co.uk',
-  //    icon: <AnalyticsIcon size={iconSize} />,
-  //    isShow: true,
-  //    isExternal: true,
-  //    eventName: 'External Link: Analytics',
-  //    type: 'Link',
-  //  },
+    {
+      title: 'Analytics',
+      href: 'https://analytics.sammcnab.co.uk/share/1jaYuaR4rKDNomDN/sammcnab.co.uk',
+      icon: <AnalyticsIcon size={iconSize} />,
+      isShow: true,
+      isExternal: true,
+      eventName: 'External Link: Analytics',
+      type: 'Link',
+    },
 ];

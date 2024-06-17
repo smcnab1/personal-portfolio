@@ -16,6 +16,11 @@ import {
   SiTypescript,
   SiVuedotjs,
   SiWordpress,
+  SiPowerapps,
+  SiPowerautomate,
+  SiPowerbi,
+  SiMicrosoftsharepoint,
+  SiVercel
 } from 'react-icons/si';
 
 export type stacksProps = {
@@ -49,4 +54,10 @@ export const STACKS: stacksProps = {
   CSS: <SiCss3 size={iconSize} className='text-blue-300' />,
   Express: <SiExpress size={iconSize} />,
   Jquery: <SiJquery size={iconSize} />,
+  PowerApps: <SiPowerapps size={iconSize} className='text-blue-500'/>,
+  PowerAutomate: <SiPowerautomate size={iconSize} className='text-purple-500'/>,
+  PowerBI: <SiPowerbi size={iconSize} className='text-yellow-400'/>,
+  SharePoint: <SiMicrosoftsharepoint size={iconSize} className='text-teal-500'/>,
+  Vercel: <SiVercel size={iconSize} />,
+
 };
