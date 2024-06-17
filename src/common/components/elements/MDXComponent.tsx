@@ -20,6 +20,7 @@ const Table = ({ children }: TableProps) => (
 );
 
 const MDXComponent = ({ children }: MarkdownRendererProps) => {
+  const formattedChildren = children.replace(/\\n/g, '\n')
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -69,7 +70,7 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
         ),
       }}
     >
-      {children}
+      {formattedChildren}
     </ReactMarkdown>
   );
 };
