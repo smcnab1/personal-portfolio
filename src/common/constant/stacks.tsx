@@ -20,7 +20,8 @@ import {
   SiPowerautomate,
   SiPowerbi,
   SiMicrosoftsharepoint,
-  SiVercel
+  SiVercel,
+  SiOpenai,
 } from 'react-icons/si';
 
 export type stacksProps = {
@@ -59,5 +60,5 @@ export const STACKS: stacksProps = {
   PowerBI: <SiPowerbi size={iconSize} className='text-yellow-400'/>,
   SharePoint: <SiMicrosoftsharepoint size={iconSize} className='text-teal-500'/>,
   Vercel: <SiVercel size={iconSize} />,
-
+  OpenAI: <SiOpenai size={iconSize} className='text-green-500'/>,
 };
