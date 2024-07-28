@@ -46,6 +46,14 @@ const About = () => {
       ),
       children: <EducationList />,
     },
+    {
+      label: (
+        <TabLabel>
+          <PublicationIcon size={17} /> Publications
+        </TabLabel>
+      ),
+      children: <PublicationList />,
+    },
   ];
   return <Tabs tabs={TABS} />;
 };
