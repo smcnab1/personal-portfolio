@@ -3,7 +3,7 @@ import { PublicationProps } from '../types/publications';
 export const PUBLICATIONS: PublicationProps[] = [
   {
     title: 'AI-Driven Simulation Scenario Generation in Healthcare Education',
-    journal: 'Festival of Learning and Teaching 2024 - Transforming learning and teaching through artificial intelligence (AI)',
+    journal: 'Festival of Learning and Teaching 2024',
     logo: '/images/careers/uwl.png',
     location: 'London, United Kingdom 🇬🇧',
     location_type: 'Presenter',
