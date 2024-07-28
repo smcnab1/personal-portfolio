@@ -24,6 +24,7 @@ import {
   SiOpenai,
 } from 'react-icons/si';
 import { MdOutlineHealthAndSafety } from 'react-icons/md';
+import { GiPublicSpeaker } from "react-icons/gi";
 
 export type stacksProps = {
   [key: string]: JSX.Element;
@@ -63,4 +64,5 @@ export const STACKS: stacksProps = {
   Vercel: <SiVercel size={iconSize} />,
   OpenAI: <SiOpenai size={iconSize} className='text-green-500'/>,
   Healthcare: <MdOutlineHealthAndSafety size={iconSize} className='text-red-500'/>,
+  'Public Speaking': <GiPublicSpeaker size={iconSize} className='text-emerald-500'/>,
 };
