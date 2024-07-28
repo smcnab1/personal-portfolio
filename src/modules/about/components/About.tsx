@@ -28,14 +28,6 @@ const About = () => {
     {
       label: (
         <TabLabel>
-          <CertIcon size={17} /> Certifications
-        </TabLabel>
-      ),
-      children: <CertificationList />,
-    },
-    {
-      label: (
-        <TabLabel>
           <CareerIcon size={17} /> Career
         </TabLabel>
       ),
@@ -48,6 +40,14 @@ const About = () => {
         </TabLabel>
       ),
       children: <EducationList />,
+    },
+    {
+      label: (
+        <TabLabel>
+          <CertIcon size={17} /> Certifications
+        </TabLabel>
+      ),
+      children: <CertificationList />,
     },
     {
       label: (
