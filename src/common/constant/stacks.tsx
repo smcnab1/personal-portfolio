@@ -23,6 +23,7 @@ import {
   SiVercel,
   SiOpenai,
 } from 'react-icons/si';
+import { MdOutlineHealthAndSafety } from 'react-icons/md';
 
 export type stacksProps = {
   [key: string]: JSX.Element;
@@ -61,4 +62,5 @@ export const STACKS: stacksProps = {
   SharePoint: <SiMicrosoftsharepoint size={iconSize} className='text-teal-500'/>,
   Vercel: <SiVercel size={iconSize} />,
   OpenAI: <SiOpenai size={iconSize} className='text-green-500'/>,
+  Healthcare: <MdOutlineHealthAndSafety size={iconSize} className='text-red-500'/>,
 };
