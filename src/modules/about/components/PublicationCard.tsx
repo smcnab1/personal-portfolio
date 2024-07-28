@@ -57,9 +57,6 @@ const PublicationCard = ({
               <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
                 •
               </span>
-              <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
-                •
-              </span>
               <span>{location}</span>
             </div>
             <div className='flex flex-col gap-2 md:flex-row md:text-[13px]'>
@@ -68,9 +65,6 @@ const PublicationCard = ({
                   {startDateFormatted}
                 </span>
               </div>
-              <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
-                •
-              </span>
               <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
                 •
               </span>
@@ -104,9 +98,9 @@ const PublicationCard = ({
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               {overview?.map((item) => (
-                <motion.li key={item} layout>
+                <motion.li key={item} layout className="list-none">
                   {item}
-                </motion.li>
+                </motion.li >
               ))}
             </motion.ul>
           )}

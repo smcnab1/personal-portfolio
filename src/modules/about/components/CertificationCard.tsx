@@ -72,9 +72,6 @@ const CertificationCard = ({
               <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
                 •
               </span>
-              <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
-                •
-              </span>
             </div>
             <div className='flex flex-col gap-2 md:flex-row md:text-[13px]'>
               <div className='flex gap-1'>
