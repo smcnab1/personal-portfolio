@@ -47,11 +47,11 @@ const PublicationCard = ({
                 target='_blank'
                 data-umami-event={`Click Publication: ${title}`}
               >
-          <h6 className='cursor-pointer'>{title}</h6>
+          <h6 className='cursor-pointer underline-offset-2 hover:text-dark hover:underline hover:dark:text-white'>{title}</h6>
           </a>
           <div className='space-y-1 text-sm text-neutral-600 dark:text-neutral-400'>
             <div className='flex flex-col gap-1 md:flex-row md:items-center md:gap-2'>
-                <span className='cursor-pointer underline-offset-2 hover:text-dark hover:underline hover:dark:text-white'>
+                <span>
                   {journal}
                 </span>
               <span className='hidden text-neutral-300 dark:text-neutral-700 lg:block'>
