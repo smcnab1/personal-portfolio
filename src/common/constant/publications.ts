@@ -1,6 +1,6 @@
-import { CareerProps } from '../types/careers';
+import { PublicationProps } from '../types/publications';
 
-export const CAREERS: CareerProps[] = [
+export const PUBLICATIONS: PublicationProps[] = [
   {
     title: 'Lecturer - Simulation & Immersive Technologies',
     journal: 'University of West London',
