@@ -17,6 +17,9 @@ export const PAYMENTTERMS = `
     <p><strong>Disputed Charges:</strong></p>
     <p>If you dispute any charges on your invoice, you must notify us in writing within 10 business days of the invoice date. We will review the dispute and respond within 10 business days. Any undisputed portion of the invoice must be paid by the due date.</p>
 
+    <p><strong>Cancellation of Services:</strong></p>
+    <p>Either party may cancel the services provided by giving written notice to the other party. If the Client cancels the services within 24 hours of the scheduled service date, the Client shall be responsible for the full fee of the service. If cancellation occurs between 7 days and 24 hours prior to the scheduled service date, the Client shall be responsible for 50% of the total service fee. Cancellations made more than 7 days in advance will not incur any fees. The Service Provider reserves the right to cancel the services immediately if the Client fails to make timely payment or breaches any other terms of this agreement. Upon cancellation, any outstanding fees become immediately due and payable.</p>
+    
     <p><strong>Service Suspension:</strong></p>
     <p>We reserve the right to suspend services if payment is not received within 15 days of the due date. Services will be reinstated upon receipt of full payment of all outstanding amounts.</p>
 
