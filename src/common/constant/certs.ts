@@ -2,6 +2,32 @@ import { CertProps } from '../types/certs';
 
 export const CERTS: CertProps[] = [
   {
+    membership: 'Advanced Life Support (ALS)',
+    organisation: 'Resuscitation Council UK (RCUK)',
+    logo: '/images/certs/rcuk_logo.jpeg',
+    type: 'Qualification',
+    start_date: '2024-09',
+    end_date: null,
+    industry: 'paramedic, medical, critical care',
+    link: 'https://www.resus.org.uk/training-courses/adult-life-support/als-2-day-course-advanced-life-support',
+    description: [
+      'ALS is Resuscitation Council UKs longest running course and has been used to train healthcare professionals for over 25 years. We have used our evidence-based Guidelines to create an ALS programme that targets key areas of resuscitation and will help build the confidence needed to take the lead in an emergency.',
+    ],
+  },
+  {
+    membership: 'Member of the Institute of Science and Technology (MIScT)',
+    organisation: 'Institute of Science and Technology',
+    logo: '/images/certs/ist_logo.jpg',
+    type: 'Membership',
+    start_date: '2024-09',
+    end_date: null,
+    industry: 'science, technology, education',
+    link: 'https://istonline.org.uk/',
+    description: [
+      'The IST is firmly committed to enhancing professional development and recognition for technical and specialist staff at all levels.',
+    ],
+  },
+  {
     membership: 'Member of the Chartered Management Institute (CMgr MCMI)',
     organisation: 'Chartered Management Institute',
     logo: '/images/certs/charteredmanagementinstitute_logo.jpeg',
