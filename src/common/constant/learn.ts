@@ -3,13 +3,13 @@ import { ContentProps } from '../types/learn';
 export const LEARN_CONTENTS: ContentProps[] = [
   {
     id: 1,
-    title: 'JavasScript Fundamental',
-    slug: 'js-fundamental',
-    description: 'Master the fundamentals of programming in JavaScript.',
-    image: '',
+    title: 'Association for Learning Technology (ALT) Portfolio',
+    slug: 'cmalt-portfolio',
+    description: 'Learn more about my work surrounding Learning Technology and its implementation.',
+    image: '/public/learn/ALT.png',
     is_new: true,
     level: 'Beginner',
-    is_show: false,
+    is_show: true,
   },
   {
     id: 2,
