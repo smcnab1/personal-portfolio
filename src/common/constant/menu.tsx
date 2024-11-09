@@ -3,6 +3,7 @@ import {
   BsEnvelopeAtFill as EmailIcon,
   BsGithub as GithubIcon,
   BsLinkedin as LinkedinIcon,
+  BsTwitterX as TwitterIcon,
 } from 'react-icons/bs';
 import {
   FiBookOpen as LearnIcon,
@@ -136,6 +137,16 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
     isShow: true,
     isExternal: true,
     eventName: 'Social: Linkedin',
+    className: '!bg-blue-500 border border dark:border-neutral-700',
+    type: 'Link',
+  },
+  {
+    title: 'X',
+    href: 'https://x.com/sammcnab',
+    icon: <TwitterIcon size={iconSize} />,
+    isShow: true,
+    isExternal: true,
+    eventName: 'Social: X',
     className: '!bg-blue-500 border border dark:border-neutral-700',
     type: 'Link',
   },

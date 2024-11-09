@@ -17,7 +17,7 @@ const Introduction = () => {
       </div>
 
       <p className='mt-6 leading-[1.8] text-neutral-800 dark:text-neutral-300 md:leading-loose'>
-      I&apos;m a University Lecturer and Registered Paramedic from Edinburgh, Scotland, 
+      I&apos;m a University Lecturer, Healthcare Simulationist and Registered Paramedic from Edinburgh, Scotland, 
       working in healthcare eduction. I have recently been dabbling further in IT 
       & Development whilst working in my role with Immersive Technologies & Simulation.</p>
     </section>
