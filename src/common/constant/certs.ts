@@ -2,6 +2,45 @@ import { CertProps } from '../types/certs';
 
 export const CERTS: CertProps[] = [
   {
+    membership: 'Fellow (FHEA)',
+    organisation: 'Higher Education Academy',
+    logo: '/images/certs/hea.png',
+    type: 'Membership',
+    start_date: '2024-11',
+    end_date: null,
+    industry: 'education, university, teaching',
+    link: 'https://www.advance-he.ac.uk/fellowship/fellowship',
+    description: [
+      'Fellowship demonstrates a personal and institutional commitment to professionalism in learning and teaching in higher education. It is awarded to individuals who have made a significant contribution to the development of learning and teaching in higher education.',
+    ],
+  },
+  {
+    membership: 'Registered Artificial Intelligence Practitioner (RPAI)',
+    organisation: 'Institute of Science & Technology',
+    logo: '/images/certs/ist_logo.jpg',
+    type: 'Membership',
+    start_date: '2024-11',
+    end_date: null,
+    industry: 'ai, technology, education',
+    link: 'https://istonline.org.uk/professional-registration/registered-artificial-intelligence-practitioners/',
+    description: [
+      'This accreditation is for all who work with AI models and has been developed by an interdisciplinary group. You can be an archeologist, philosopher or computer scientist – as long as you work on AI models in any capacity this accreditation works for you.',
+    ],
+  },
+  {
+    membership: 'Member (MCoROM)',
+    organisation: 'College of Remote and Offshore Medicine Foundation',
+    logo: '/images/certs/corom.jpg',
+    type: 'Membership',
+    start_date: '2024-09',
+    end_date: null,
+    industry: 'paramedic, medical, critical care',
+    link: 'https://corom.edu.mt/membership/',
+    description: [
+      'Membership of the College of Remote and Offshore Medicine Foundation provides access to a global community of healthcare professionals dedicated to advancing best practices, education, and research in austere, remote, and pre-hospital environments.',
+    ],
+  },
+  {
     membership: 'Advanced Life Support (ALS)',
     organisation: 'Resuscitation Council UK (RCUK)',
     logo: '/images/certs/rcuk_logo.jpeg',

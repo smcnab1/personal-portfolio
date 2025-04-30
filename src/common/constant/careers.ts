@@ -20,6 +20,23 @@ export const CAREERS: CareerProps[] = [
     ],
   },
   {
+    position: 'Module Lead - Year 3 & 4 Nursing Practice',
+    company: 'University of West London',
+    company_legal_name: 'UWL',
+    logo: '/images/careers/uwl.png',
+    location: 'London, United Kingdom 🇬🇧',
+    location_type: 'On-Site',
+    type: 'Full-time',
+    start_date: '2024-11',
+    end_date: null,
+    industry: 'higher-education',
+    link: 'https://uwl.ac.uk',
+    responsibilities: [
+      'Design & Implementation of Nursing curriculum, focussed on pre-placement preparation',
+      'Supporting and guiding students through the modules and their placement time to ensure students are comfortable and operating effectively.',
+    ],
+  },
+  {
     position: 'Module Lead - BNurs(Hons) Nursing Practice',
     company: 'University of West London',
     company_legal_name: 'UWL',
@@ -28,7 +45,7 @@ export const CAREERS: CareerProps[] = [
     location_type: 'On-Site',
     type: 'Full-time',
     start_date: '2023-04',
-    end_date: null,
+    end_date: '2024-11',
     industry: 'higher-education',
     link: 'https://uwl.ac.uk',
     responsibilities: [

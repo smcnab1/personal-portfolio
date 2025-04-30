@@ -2,6 +2,16 @@ import { EducationProps } from '../types/education';
 
 export const EDUCATION: EducationProps[] = [
   {
+    school: 'University of Cumbria',
+    major: 'Paramedic: Practice Development',
+    logo: '/images/education/university_of_cumbria.jpeg',
+    location: 'Lancaster, United Kingdom 🇬🇧',
+    degree: 'Masters of Science (MSc)',
+    start_year: 2024,
+    end_year: 2026,
+    link: 'https://cumbria.ac.uk',
+  },
+  {
     school: 'University of West London',
     major: 'Professional Academic Practice',
     logo: '/images/education/uwl.png',
