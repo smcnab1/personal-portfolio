@@ -35,7 +35,6 @@ const BlogHeader = ({
     };
   }, []);
 
-  const transition = { duration: 0.3, ease: 'easeInOut' };
   const titleVariants = {
     initial: { opacity: 0, y: -20 },
     animate: { opacity: 1, y: 0 },
@@ -49,7 +48,6 @@ const BlogHeader = ({
           initial='initial'
           animate='animate'
           variants={titleVariants}
-          transition={transition}
         >
           {title}
         </motion.h1>
@@ -59,7 +57,6 @@ const BlogHeader = ({
           initial='initial'
           animate='animate'
           variants={titleVariants}
-          transition={transition}
         >
           <h1 className='text-lg font-semibold lg:text-xl'>{title}</h1>
         </motion.div>

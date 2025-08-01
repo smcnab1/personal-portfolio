@@ -4,7 +4,6 @@ import {
   HiCheckCircle as CheckIcon,
   HiOutlineClipboardCopy as CopyIcon,
 } from 'react-icons/hi';
-import { CodeProps } from 'react-markdown/lib/ast-to-react';
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css';
 import diff from 'react-syntax-highlighter/dist/cjs/languages/prism/diff';
@@ -28,14 +27,19 @@ SyntaxHighlighter.registerLanguage(languages.diff, diff);
 SyntaxHighlighter.registerLanguage(languages.tsx, tsx);
 SyntaxHighlighter.registerLanguage(languages.css, css);
 
+interface CodeBlockProps {
+  className?: string;
+  children?: React.ReactNode;
+  inline?: boolean;
+}
+
 const CodeBlock = ({
   className = '',
   children,
   inline,
   ...props
-}: CodeProps) => {
+}: CodeBlockProps) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  // eslint-disable-next-line unused-imports/no-unused-vars
   const [value, copy] = useCopyToClipboard();
   const match = /language-(\w+)/.exec(className || '');
 
@@ -54,6 +58,8 @@ const CodeBlock = ({
     }
   }, [isCopied]);
 
+  const childrenString = children?.toString() || '';
+
   return (
     <>
       {!inline ? (
@@ -62,7 +68,7 @@ const CodeBlock = ({
             className='absolute right-3 top-3 rounded-lg border border-neutral-700 p-2 hover:bg-neutral-800'
             type='button'
             aria-label='Copy to Clipboard'
-            onClick={() => handleCopy(children.toString())}
+            onClick={() => handleCopy(childrenString)}
             data-umami-event='Click Copy Code'
           >
             {!isCopied ? (
@@ -85,7 +91,7 @@ const CodeBlock = ({
             language={match ? match[1] : 'javascript'}
             wrapLongLines={true}
           >
-            {String(children).replace(/\n$/, '')}
+            {childrenString.replace(/\n$/, '')}
           </SyntaxHighlighter>
         </div>
       ) : (
@@ -100,6 +106,5 @@ const CodeBlock = ({
 const LoadingPlaceholder = () => <div className='mb-12 mt-12 h-36 w-full' />;
 
 export default dynamic(() => Promise.resolve(CodeBlock), {
-  ssr: false,
   loading: LoadingPlaceholder,
 });

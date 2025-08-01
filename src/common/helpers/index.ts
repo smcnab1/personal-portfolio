@@ -1,5 +1,5 @@
 import { format, parseISO } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import { toZonedTime } from 'date-fns-tz';
 
 import { ChapterGroupProps, MdxFileContentProps } from '../types/learn';
 
@@ -16,7 +16,7 @@ export const formatDate = (date: string, type = 'MMMM dd, yyyy') => {
   }
 
   const formattedDate = format(
-    utcToZonedTime(parseISO(date), 'Europe/London'),
+    toZonedTime(parseISO(date), 'Europe/London'),
     type,
   );
   return formattedDate;

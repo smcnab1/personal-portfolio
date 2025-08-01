@@ -1,5 +1,4 @@
 import { formatDistanceToNowStrict } from 'date-fns';
-import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { SiWakatime as WakatimeIcon } from 'react-icons/si';
@@ -26,11 +25,7 @@ const CodingActive = ({ lastUpdate }: CodingActiveProps) => {
     const formatLastUpdate = (): void => {
       const lastUpdateDate = lastUpdate || data?.last_update;
       if (lastUpdateDate) {
-        const zonedDate = utcToZonedTime(
-          zonedTimeToUtc(lastUpdateDate, 'Europe/London'),
-          'Europe/London',
-        );
-        const distance = formatDistanceToNowStrict(zonedDate, {
+        const distance = formatDistanceToNowStrict(new Date(lastUpdateDate), {
           addSuffix: true,
         });
         setFormattedLastUpdate(distance);

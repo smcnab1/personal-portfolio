@@ -16,7 +16,13 @@ import {
 const CLIENT_ID = process.env.SPOTIFY_CLIENT_ID;
 const CLIENT_SECRET = process.env.SPOTIFY_CLIENT_SECRET;
 const REFRESH_TOKEN = process.env.SPOTIFY_REFRESH_TOKEN;
-const TOKEN = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64');
+
+// Check if required environment variables are set
+const isSpotifyConfigured = CLIENT_ID && CLIENT_SECRET && REFRESH_TOKEN;
+
+const TOKEN = isSpotifyConfigured
+  ? Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')
+  : '';
 
 const BASE_URL = 'https://api.spotify.com/v1';
 const AVAILABLE_DEVICES_ENDPOINT = `${BASE_URL}/me/player/devices`;
@@ -25,128 +31,165 @@ const TOP_TRACKS_ENDPOINT = `${BASE_URL}/me/top/tracks`;
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
 const getAccessToken = async (): Promise<AccessTokenResponseProps> => {
-  const response = await axios.post(
-    TOKEN_ENDPOINT,
-    querystring.stringify({
-      grant_type: 'refresh_token',
-      refresh_token: REFRESH_TOKEN,
-    }),
-    {
-      headers: {
-        Authorization: `Basic ${TOKEN}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    },
-  );
+  if (!isSpotifyConfigured) {
+    throw new Error('Spotify credentials not configured');
+  }
 
-  return response.data;
+  try {
+    const response = await axios.post(
+      TOKEN_ENDPOINT,
+      querystring.stringify({
+        grant_type: 'refresh_token',
+        refresh_token: REFRESH_TOKEN,
+      }),
+      {
+        headers: {
+          Authorization: `Basic ${TOKEN}`,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      },
+    );
+
+    return response.data;
+  } catch (error) {
+    console.error('Failed to get Spotify access token:', error);
+    throw error;
+  }
 };
 
 export const getAvailableDevices = async (): Promise<DeviceResponseProps> => {
-  const { access_token } = await getAccessToken();
-
-  const response = await axios.get(AVAILABLE_DEVICES_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-
-  const status = response.status;
-
-  if (status === 204 || status > 400) {
-    return { status, data: [] };
+  if (!isSpotifyConfigured) {
+    return { status: 401, data: [] };
   }
 
-  const responseData: DeviceDataProps = response.data;
+  try {
+    const { access_token } = await getAccessToken();
 
-  const devices = responseData?.devices?.map((device) => ({
-    name: device.name,
-    is_active: device.is_active,
-    type: device.type,
-    model: PAIR_DEVICES[device?.type]?.model || 'Unknown Device',
-    id: PAIR_DEVICES[device?.type]?.id || 'smcnab1-device',
-  }));
+    const response = await axios.get(AVAILABLE_DEVICES_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
 
-  return {
-    status,
-    data: devices,
-  };
+    const status = response.status;
+
+    if (status === 204 || status > 400) {
+      return { status, data: [] };
+    }
+
+    const responseData: DeviceDataProps = response.data;
+
+    const devices = responseData?.devices?.map((device) => ({
+      name: device.name,
+      is_active: device.is_active,
+      type: device.type,
+      model: PAIR_DEVICES[device?.type]?.model || 'Unknown Device',
+      id: PAIR_DEVICES[device?.type]?.id || 'smcnab1-device',
+    }));
+
+    return {
+      status,
+      data: devices,
+    };
+  } catch (error) {
+    console.error('Failed to get available devices:', error);
+    return { status: 500, data: [] };
+  }
 };
 
 export const getNowPlaying = async (): Promise<NowPlayingResponseProps> => {
-  const { access_token } = await getAccessToken();
-
-  const response = await axios.get(NOW_PLAYING_ENDPOINT, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-
-  const status = response.status;
-
-  if (status === 204 || status > 400) {
-    return { status, isPlaying: false, data: null };
+  if (!isSpotifyConfigured) {
+    return { status: 401, isPlaying: false, data: null };
   }
 
-  const responseData: SongProps = response.data;
+  try {
+    const { access_token } = await getAccessToken();
 
-  if (!responseData.item) {
-    return { status, isPlaying: false, data: null };
+    const response = await axios.get(NOW_PLAYING_ENDPOINT, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
+
+    const status = response.status;
+
+    if (status === 204 || status > 400) {
+      return { status, isPlaying: false, data: null };
+    }
+
+    const responseData: SongProps = response.data;
+
+    if (!responseData.item) {
+      return { status, isPlaying: false, data: null };
+    }
+
+    const isPlaying: boolean = responseData?.is_playing;
+    const album: string = responseData?.item?.album.name ?? '';
+    const albumImageUrl: string | undefined =
+      responseData?.item?.album?.images?.find((image) => image?.width === 640)
+        ?.url ?? undefined;
+    const artist: string =
+      responseData?.item?.artists?.map((artist) => artist?.name).join(', ') ??
+      '';
+    const songUrl: string = responseData?.item?.external_urls?.spotify ?? '';
+    const title: string = responseData?.item?.name ?? '';
+
+    return {
+      status,
+      isPlaying,
+      data: {
+        album,
+        albumImageUrl,
+        artist,
+        songUrl,
+        title,
+      },
+    };
+  } catch (error) {
+    console.error('Failed to get now playing:', error);
+    return { status: 500, isPlaying: false, data: null };
   }
-
-  const isPlaying: boolean = responseData?.is_playing;
-  const album: string = responseData?.item?.album.name ?? '';
-  const albumImageUrl: string | undefined =
-    responseData?.item?.album?.images?.find((image) => image?.width === 640)
-      ?.url ?? undefined;
-  const artist: string =
-    responseData?.item?.artists?.map((artist) => artist?.name).join(', ') ?? '';
-  const songUrl: string = responseData?.item?.external_urls?.spotify ?? '';
-  const title: string = responseData?.item?.name ?? '';
-
-  return {
-    status,
-    isPlaying,
-    data: {
-      album,
-      albumImageUrl,
-      artist,
-      songUrl,
-      title,
-    },
-  };
 };
 
 export const getTopTracks = async (): Promise<TopTracksResponseProps> => {
-  const { access_token } = await getAccessToken();
-
-  const response = await axios.get(`${TOP_TRACKS_ENDPOINT}?limit=10`, {
-    headers: {
-      Authorization: `Bearer ${access_token}`,
-    },
-  });
-
-  const status = response.status;
-
-  if (status === 204 || status > 400) {
-    return { status, data: [] };
+  if (!isSpotifyConfigured) {
+    return { status: 401, data: [] };
   }
 
-  const responseData = response.data;
+  try {
+    const { access_token } = await getAccessToken();
 
-  const tracks: TrackProps[] = responseData.items.map((track: any) => ({
-    album: {
-      name: track.album.name,
-      image: track.album.images.find(
-        (image: { width: number }) => image.width === 64,
-      ),
-    },
-    artist: track.artists
-      .map((artist: { name: string }) => artist.name)
-      .join(', '),
-    songUrl: track.external_urls.spotify,
-    title: track.name,
-  }));
+    const response = await axios.get(`${TOP_TRACKS_ENDPOINT}?limit=10`, {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    });
 
-  return { status, data: tracks };
+    const status = response.status;
+
+    if (status === 204 || status > 400) {
+      return { status, data: [] };
+    }
+
+    const responseData = response.data;
+
+    const tracks: TrackProps[] = responseData.items.map((track: any) => ({
+      album: {
+        name: track.album.name,
+        image: track.album.images.find(
+          (image: { width: number }) => image.width === 64,
+        ),
+      },
+      artist: track.artists
+        .map((artist: { name: string }) => artist.name)
+        .join(', '),
+      songUrl: track.external_urls.spotify,
+      title: track.name,
+    }));
+
+    return { status, data: tracks };
+  } catch (error) {
+    console.error('Failed to get top tracks:', error);
+    return { status: 500, data: [] };
+  }
 };

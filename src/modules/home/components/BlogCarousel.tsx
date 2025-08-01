@@ -18,8 +18,9 @@ const BlogCarousel = () => {
     return data?.data?.posts || [];
   }, [data]);
 
-  const ref =
-    useRef<HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>;
+  const ref = useRef<HTMLDivElement>(
+    null,
+  ) as React.MutableRefObject<HTMLDivElement>;
   const { events } = useDraggable(ref);
 
   const renderBlogCards = () => {
@@ -45,7 +46,7 @@ const BlogCarousel = () => {
 
   return (
     <div
-      className='flex gap-4 overflow-x-scroll p-1 scrollbar-hide'
+      className='scrollbar-hide flex gap-4 overflow-x-scroll p-1'
       {...events}
       ref={ref}
     >
