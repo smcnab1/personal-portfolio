@@ -1,4 +1,8 @@
+import React from 'react';
 import { BsFillBootstrapFill, BsRobot } from 'react-icons/bs';
+import { FaMicrosoft } from 'react-icons/fa';
+import { GiPublicSpeaker } from 'react-icons/gi';
+import { MdOutlineHealthAndSafety } from 'react-icons/md';
 import {
   SiCss3,
   SiExpress,
@@ -9,20 +13,16 @@ import {
   SiNextdotjs,
   SiNginx,
   SiNodedotjs,
+  SiOpenai,
   SiPrisma,
   SiReact,
   SiStyledcomponents,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
   SiVuedotjs,
   SiWordpress,
-  SiVercel,
-  SiOpenai,
 } from 'react-icons/si';
-import { MdOutlineHealthAndSafety } from 'react-icons/md';
-import { GiPublicSpeaker } from 'react-icons/gi';
-import { FaMicrosoft } from 'react-icons/fa';
-import React from 'react';
 
 export type stacksProps = {
   [key: string]: React.ReactElement;

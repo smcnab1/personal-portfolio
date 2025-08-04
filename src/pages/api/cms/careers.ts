@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +10,6 @@ export default async function handler(
   if (req.method === 'GET') {
     try {
       const careers = await prisma.career.findMany({
-        where: { isActive: true },
         orderBy: { sortOrder: 'asc' },
       });
 
@@ -28,10 +27,13 @@ export default async function handler(
         industry: career.industry,
         link: career.link,
         responsibilities: JSON.parse(career.responsibilities),
+        isActive: career.isActive,
+        sortOrder: career.sortOrder,
       }));
 
       res.status(200).json(formattedCareers);
     } catch (error) {
+      console.error('Error fetching careers:', error);
       res.status(500).json({ error: 'Failed to fetch careers' });
     }
   } else if (req.method === 'POST') {
@@ -70,6 +72,7 @@ export default async function handler(
 
       res.status(201).json(career);
     } catch (error) {
+      console.error('Error creating career:', error);
       res.status(500).json({ error: 'Failed to create career' });
     }
   } else if (req.method === 'PUT') {
@@ -96,19 +99,29 @@ export default async function handler(
 
       res.status(200).json(career);
     } catch (error) {
+      console.error('Error updating career:', error);
       res.status(500).json({ error: 'Failed to update career' });
     }
   } else if (req.method === 'DELETE') {
     try {
-      const { id } = req.query;
+      const { id, hard } = req.query;
 
-      await prisma.career.update({
-        where: { id: parseInt(id as string) },
-        data: { isActive: false },
-      });
-
-      res.status(200).json({ message: 'Career deleted successfully' });
+      if (hard === 'true') {
+        // Hard delete - permanently remove from database
+        await prisma.career.delete({
+          where: { id: parseInt(id as string) },
+        });
+        res.status(200).json({ message: 'Career permanently deleted' });
+      } else {
+        // Soft delete - set isActive to false
+        await prisma.career.update({
+          where: { id: parseInt(id as string) },
+          data: { isActive: false },
+        });
+        res.status(200).json({ message: 'Career deleted successfully' });
+      }
     } catch (error) {
+      console.error('Error deleting career:', error);
       res.status(500).json({ error: 'Failed to delete career' });
     }
   } else {

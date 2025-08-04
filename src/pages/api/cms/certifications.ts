@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -10,25 +10,27 @@ export default async function handler(
   if (req.method === 'GET') {
     try {
       const certifications = await prisma.certification.findMany({
-        where: { isActive: true },
         orderBy: { sortOrder: 'asc' },
       });
 
-      const formattedCertifications = certifications.map((cert) => ({
-        id: cert.id,
-        membership: cert.membership,
-        organisation: cert.organisation,
-        logo: cert.logo,
-        type: cert.type,
-        start_date: cert.startDate,
-        end_date: cert.endDate,
-        industry: cert.industry,
-        link: cert.link,
-        description: JSON.parse(cert.description),
+      const formattedCertifications = certifications.map((certification) => ({
+        id: certification.id,
+        membership: certification.membership,
+        organisation: certification.organisation,
+        logo: certification.logo,
+        type: certification.type,
+        start_date: certification.startDate,
+        end_date: certification.endDate,
+        industry: certification.industry,
+        link: certification.link,
+        description: JSON.parse(certification.description),
+        isActive: certification.isActive,
+        sortOrder: certification.sortOrder,
       }));
 
       res.status(200).json(formattedCertifications);
     } catch (error) {
+      console.error('Error fetching certifications:', error);
       res.status(500).json({ error: 'Failed to fetch certifications' });
     }
   } else if (req.method === 'POST') {
@@ -61,6 +63,7 @@ export default async function handler(
 
       res.status(201).json(certification);
     } catch (error) {
+      console.error('Error creating certification:', error);
       res.status(500).json({ error: 'Failed to create certification' });
     }
   } else if (req.method === 'PUT') {
@@ -84,19 +87,29 @@ export default async function handler(
 
       res.status(200).json(certification);
     } catch (error) {
+      console.error('Error updating certification:', error);
       res.status(500).json({ error: 'Failed to update certification' });
     }
   } else if (req.method === 'DELETE') {
     try {
-      const { id } = req.query;
+      const { id, hard } = req.query;
 
-      await prisma.certification.update({
-        where: { id: parseInt(id as string) },
-        data: { isActive: false },
-      });
-
-      res.status(200).json({ message: 'Certification deleted successfully' });
+      if (hard === 'true') {
+        // Hard delete - permanently remove from database
+        await prisma.certification.delete({
+          where: { id: parseInt(id as string) },
+        });
+        res.status(200).json({ message: 'Certification permanently deleted' });
+      } else {
+        // Soft delete - set isActive to false
+        await prisma.certification.update({
+          where: { id: parseInt(id as string) },
+          data: { isActive: false },
+        });
+        res.status(200).json({ message: 'Certification deleted successfully' });
+      }
     } catch (error) {
+      console.error('Error deleting certification:', error);
       res.status(500).json({ error: 'Failed to delete certification' });
     }
   } else {

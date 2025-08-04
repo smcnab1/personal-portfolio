@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -9,26 +9,28 @@ export default async function handler(
 ) {
   if (req.method === 'GET') {
     try {
-      const education = await prisma.education.findMany({
-        where: { isActive: true },
+      const educations = await prisma.education.findMany({
         orderBy: { sortOrder: 'asc' },
       });
 
-      const formattedEducation = education.map((edu) => ({
-        id: edu.id,
-        degree: edu.degree,
-        school: edu.school,
-        major: edu.major,
-        logo: edu.logo,
-        location: edu.location,
-        start_year: edu.startYear,
-        end_year: edu.endYear,
-        link: edu.link,
+      const formattedEducations = educations.map((education) => ({
+        id: education.id,
+        degree: education.degree,
+        school: education.school,
+        major: education.major,
+        logo: education.logo,
+        location: education.location,
+        start_year: education.startYear,
+        end_year: education.endYear,
+        link: education.link,
+        isActive: education.isActive,
+        sortOrder: education.sortOrder,
       }));
 
-      res.status(200).json(formattedEducation);
+      res.status(200).json(formattedEducations);
     } catch (error) {
-      res.status(500).json({ error: 'Failed to fetch education' });
+      console.error('Error fetching education:', error);
+      res.status(500).json({ error: 'Failed to fetch educations' });
     }
   } else if (req.method === 'POST') {
     try {
@@ -50,14 +52,15 @@ export default async function handler(
           major,
           logo,
           location,
-          startYear: parseInt(start_year),
-          endYear: end_year ? parseInt(end_year) : null,
+          startYear: start_year,
+          endYear: end_year,
           link,
         },
       });
 
       res.status(201).json(education);
     } catch (error) {
+      console.error('Error creating education:', error);
       res.status(500).json({ error: 'Failed to create education' });
     }
   } else if (req.method === 'PUT') {
@@ -72,27 +75,37 @@ export default async function handler(
           major: data.major,
           logo: data.logo,
           location: data.location,
-          startYear: parseInt(data.start_year),
-          endYear: data.end_year ? parseInt(data.end_year) : null,
+          startYear: data.start_year,
+          endYear: data.end_year,
           link: data.link,
         },
       });
 
       res.status(200).json(education);
     } catch (error) {
+      console.error('Error updating education:', error);
       res.status(500).json({ error: 'Failed to update education' });
     }
   } else if (req.method === 'DELETE') {
     try {
-      const { id } = req.query;
+      const { id, hard } = req.query;
 
-      await prisma.education.update({
-        where: { id: parseInt(id as string) },
-        data: { isActive: false },
-      });
-
-      res.status(200).json({ message: 'Education deleted successfully' });
+      if (hard === 'true') {
+        // Hard delete - permanently remove from database
+        await prisma.education.delete({
+          where: { id: parseInt(id as string) },
+        });
+        res.status(200).json({ message: 'Education permanently deleted' });
+      } else {
+        // Soft delete - set isActive to false
+        await prisma.education.update({
+          where: { id: parseInt(id as string) },
+          data: { isActive: false },
+        });
+        res.status(200).json({ message: 'Education deleted successfully' });
+      }
     } catch (error) {
+      console.error('Error deleting education:', error);
       res.status(500).json({ error: 'Failed to delete education' });
     }
   } else {

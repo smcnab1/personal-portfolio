@@ -16,8 +16,8 @@ import {
   SOCIAL_MEDIA,
 } from '@/common/constant/menu';
 import { CommandPaletteContext } from '@/common/context/CommandPaletteContext';
-import useIsMobile from '@/common/hooks/useIsMobile';
 import { useDebounce } from '@/common/hooks/useDebounce';
+import useIsMobile from '@/common/hooks/useIsMobile';
 import { MenuItemProps } from '@/common/types/menu';
 import AiLoading from '@/modules/cmdpallete/components/AiLoading';
 import AiResponses from '@/modules/cmdpallete/components/AiResponses';

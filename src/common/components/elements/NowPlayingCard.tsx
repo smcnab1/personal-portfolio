@@ -15,16 +15,18 @@ const NowPlayingCard = ({ isExpand = false }: { isExpand?: boolean }) => {
 
   const [expand, setExpand] = useState(isExpand);
 
-  const trimmedSongTitle =
-    data?.title &&
-    data?.title.slice(0, 40) + (data?.title?.length > 40 ? '...' : '');
+  const trimmedSongTitle = data?.title
+    ? data.title.slice(0, 40) + (data.title.length > 40 ? '...' : '')
+    : '';
 
-  const trimmedSongArtist =
-    data?.artist &&
-    data?.artist.slice(0, 20) + (data?.artist?.length > 20 ? '...' : '');
+  const trimmedSongArtist = data?.artist
+    ? data.artist.slice(0, 20) + (data.artist.length > 20 ? '...' : '')
+    : '';
 
   const handleOpenSongUrl = (url?: string) => {
-    url && window.open(url, '_blank');
+    if (url) {
+      window.open(url, '_blank');
+    }
   };
 
   const handleMusicToggle = () => setExpand(!expand);

@@ -22,6 +22,7 @@ export default async function handler(
 
     res.status(200).json({ status: 200, message: response?.data?.message });
   } catch (error) {
-    res.status(500).json({ error: 'Something went wrong!' });
+    console.error('Error sending email:', error);
+    res.status(500).json({ error: 'Failed to send email' });
   }
 }

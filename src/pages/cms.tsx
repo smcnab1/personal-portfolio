@@ -1,15 +1,32 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+
 import Button from '@/common/components/elements/Button';
 import Card from '@/common/components/elements/Card';
+import AboutManager from '@/common/components/elements/CMS/AboutManager';
+import CareerManager from '@/common/components/elements/CMS/CareerManager';
+import CertificationManager from '@/common/components/elements/CMS/CertificationManager';
+import EducationManager from '@/common/components/elements/CMS/EducationManager';
+import ProjectManager from '@/common/components/elements/CMS/ProjectManager';
+import PublicationManager from '@/common/components/elements/CMS/PublicationManager';
+import SettingsManager from '@/common/components/elements/CMS/SettingsManager';
+import { CMSTabs } from '@/common/components/elements/CMSTabs';
 import Container from '@/common/components/elements/Container';
 import Loading from '@/common/components/elements/Loading';
-import EmptyState from '@/common/components/elements/EmptyState';
-import { CMSTabs } from '@/common/components/elements/CMSTabs';
 
 const CMSInterface = () => {
   const [authenticated, setAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, _setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('careers');
+
+  const tabs = [
+    { id: 'careers', label: 'Careers', icon: '💼' },
+    { id: 'certifications', label: 'Certifications', icon: '🏆' },
+    { id: 'education', label: 'Education', icon: '🎓' },
+    { id: 'publications', label: 'Publications', icon: '📚' },
+    { id: 'projects', label: 'Projects', icon: '🚀' },
+    { id: 'about', label: 'About', icon: '👤' },
+    { id: 'settings', label: 'Settings', icon: '⚙️' },
+  ];
 
   useEffect(() => {
     // Check if user is authenticated
@@ -28,6 +45,13 @@ const CMSInterface = () => {
 
   const handleLogin = () => {
     setAuthenticated(true);
+    document.cookie = 'cms-auth=true; path=/; max-age=86400'; // 24 hours
+  };
+
+  const handleLogout = () => {
+    setAuthenticated(false);
+    document.cookie =
+      'cms-auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
   };
 
   if (!authenticated) {
@@ -103,6 +127,27 @@ const CMSInterface = () => {
     return <Loading />;
   }
 
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'careers':
+        return <CareerManager />;
+      case 'certifications':
+        return <CertificationManager />;
+      case 'education':
+        return <EducationManager />;
+      case 'publications':
+        return <PublicationManager />;
+      case 'projects':
+        return <ProjectManager />;
+      case 'about':
+        return <AboutManager />;
+      case 'settings':
+        return <SettingsManager />;
+      default:
+        return <CareerManager />;
+    }
+  };
+
   return (
     <Container>
       <div className='py-8'>
@@ -114,7 +159,7 @@ const CMSInterface = () => {
             </p>
           </div>
           <Button
-            onClick={() => setAuthenticated(false)}
+            onClick={handleLogout}
             className='bg-gray-600 hover:bg-gray-700'
           >
             Logout
@@ -122,14 +167,12 @@ const CMSInterface = () => {
         </div>
 
         <Card className='p-6'>
-          <h2 className='mb-4 text-xl font-semibold'>CMS Dashboard</h2>
-          <p>
-            CMS is working! This is a simplified version to test the basic
-            functionality.
-          </p>
-          <p className='mt-2'>
-            All components are now properly imported and working.
-          </p>
+          <CMSTabs
+            tabs={tabs}
+            activeTab={activeTab}
+            onTabChange={setActiveTab}
+          />
+          <div className='mt-6'>{renderTabContent()}</div>
         </Card>
       </div>
     </Container>

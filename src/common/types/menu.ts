@@ -1,4 +1,4 @@
-import { ReactNode, ReactElement } from 'react';
+import { ReactElement, ReactNode } from 'react';
 
 export type MenuItemProps = {
   title: string;

@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -15,6 +15,7 @@ export default async function handler(
 
       res.status(200).json(about ? [about] : []);
     } catch (error) {
+      console.error('Error fetching about data:', error);
       res.status(500).json({ error: 'Failed to fetch about content' });
     }
   } else if (req.method === 'POST') {
@@ -27,6 +28,7 @@ export default async function handler(
 
       res.status(201).json(about);
     } catch (error) {
+      console.error('Error creating about data:', error);
       res.status(500).json({ error: 'Failed to create about content' });
     }
   } else if (req.method === 'PUT') {
@@ -40,6 +42,7 @@ export default async function handler(
 
       res.status(200).json(about);
     } catch (error) {
+      console.error('Error updating about data:', error);
       res.status(500).json({ error: 'Failed to update about content' });
     }
   } else {

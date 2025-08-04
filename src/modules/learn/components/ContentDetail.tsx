@@ -62,7 +62,9 @@ const ContentDetail = ({ content, frontMatter }: ContentDetailProps) => {
   };
 
   useEffect(() => {
-    resContentData && setContentList(resContentData.data);
+    if (resContentData) {
+      setContentList(resContentData.data);
+    }
   }, [resContentData]);
 
   useEffect(() => {
@@ -74,12 +76,16 @@ const ContentDetail = ({ content, frontMatter }: ContentDetailProps) => {
 
     if (currentContentId > 0) {
       const previousContent = getNextOrPreviousContent(contentList, -1);
-      previousContent && setPreviousTitle(previousContent.title);
+      if (previousContent) {
+        setPreviousTitle(previousContent.title);
+      }
     }
 
     if (currentContentId < contentList.length - 1) {
       const nextContent = getNextOrPreviousContent(contentList, 1);
-      nextContent && setNextTitle(nextContent?.title);
+      if (nextContent) {
+        setNextTitle(nextContent.title);
+      }
     }
   }, [contentList, contentSlug, getNextOrPreviousContent]);
 

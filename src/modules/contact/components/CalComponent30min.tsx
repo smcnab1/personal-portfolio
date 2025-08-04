@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { getCalApi } from "@calcom/embed-react";
+import { getCalApi } from '@calcom/embed-react';
+import { useEffect, useRef } from 'react';
 import { FiCalendar, FiClock, FiVideo } from 'react-icons/fi';
 
 interface CalComponentProps {
@@ -14,14 +14,14 @@ const CalComponent30min: React.FC<CalComponentProps> = ({ isVisible }) => {
 
     (async function () {
       const cal = await getCalApi({});
-      cal("ui", {
-        "styles": {
-          "branding": {
-            "brandColor": "#38b2ac"
-          }
+      cal('ui', {
+        styles: {
+          branding: {
+            brandColor: '#38b2ac',
+          },
         },
-        "hideEventTypeDetails": false,
-        "layout": "month_view"
+        hideEventTypeDetails: false,
+        layout: 'month_view',
       });
 
       if (buttonRef.current) {
@@ -37,8 +37,8 @@ const CalComponent30min: React.FC<CalComponentProps> = ({ isVisible }) => {
           buttonRef.current.click();
         }
       }}
-      data-aos-duration="1000"
-      className="flex cursor-pointer flex-col space-y-5 rounded-2xl border bg-white bg-gradient-to-tr px-6 py-5 transition-all duration-300 hover:scale-[101%] hover:shadow-sm dark:border-teal-500 dark:from-teal-950 dark:to-teal-800 dark:text-white"
+      data-aos-duration='1000'
+      className='flex cursor-pointer flex-col space-y-5 rounded-2xl border bg-white bg-gradient-to-tr px-6 py-5 transition-all duration-300 hover:scale-[101%] hover:shadow-sm dark:border-teal-500 dark:from-teal-950 dark:to-teal-800 dark:text-white'
     >
       <div className='flex items-start justify-between gap-5'>
         <div className='space-y-1'>
@@ -66,8 +66,8 @@ const CalComponent30min: React.FC<CalComponentProps> = ({ isVisible }) => {
       <button
         ref={buttonRef}
         style={{ display: 'none' }}
-        data-cal-namespace=""
-        data-cal-link="sam-mcnab-7lmpet/30min"
+        data-cal-namespace=''
+        data-cal-link='sam-mcnab-7lmpet/30min'
         data-cal-config='{"layout":"month_view"}'
       >
         Click me

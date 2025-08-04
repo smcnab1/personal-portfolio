@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -10,7 +10,6 @@ export default async function handler(
   if (req.method === 'GET') {
     try {
       const projects = await prisma.project.findMany({
-        where: { isShow: true },
         orderBy: { sortOrder: 'asc' },
       });
 
@@ -30,6 +29,7 @@ export default async function handler(
 
       res.status(200).json(formattedProjects);
     } catch (error) {
+      console.error('Error fetching projects:', error);
       res.status(500).json({ error: 'Failed to fetch projects' });
     }
   } else if (req.method === 'POST') {
@@ -62,6 +62,7 @@ export default async function handler(
 
       res.status(201).json(project);
     } catch (error) {
+      console.error('Error creating project:', error);
       res.status(500).json({ error: 'Failed to create project' });
     }
   } else if (req.method === 'PUT') {
@@ -85,19 +86,29 @@ export default async function handler(
 
       res.status(200).json(project);
     } catch (error) {
+      console.error('Error updating project:', error);
       res.status(500).json({ error: 'Failed to update project' });
     }
   } else if (req.method === 'DELETE') {
     try {
-      const { id } = req.query;
+      const { id, hard } = req.query;
 
-      await prisma.project.update({
-        where: { id: parseInt(id as string) },
-        data: { isShow: false },
-      });
-
-      res.status(200).json({ message: 'Project deleted successfully' });
+      if (hard === 'true') {
+        // Hard delete - permanently remove from database
+        await prisma.project.delete({
+          where: { id: parseInt(id as string) },
+        });
+        res.status(200).json({ message: 'Project permanently deleted' });
+      } else {
+        // Soft delete - set isShow to false
+        await prisma.project.update({
+          where: { id: parseInt(id as string) },
+          data: { isShow: false },
+        });
+        res.status(200).json({ message: 'Project deleted successfully' });
+      }
     } catch (error) {
+      console.error('Error deleting project:', error);
       res.status(500).json({ error: 'Failed to delete project' });
     }
   } else {

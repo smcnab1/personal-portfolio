@@ -4,15 +4,14 @@ import {
   HiOutlineBriefcase as CareerIcon,
   HiOutlineDocumentText as CertIcon,
   HiOutlineNewspaper as PublicationIcon,
-
 } from 'react-icons/hi';
 
 import { Tabs } from '@/common/components/elements/Tabs';
 
 import CareerList from './CareerList';
-import PublicationList from './PublicationList';
-import EducationList from './EducationList';
 import CertificationList from './CertificationList';
+import EducationList from './EducationList';
+import PublicationList from './PublicationList';
 import Story from './Story';
 
 const About = () => {

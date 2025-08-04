@@ -1,8 +1,7 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcryptjs';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-const prisma = new PrismaClient();
+const _prisma = new PrismaClient();
 
 export default async function handler(
   req: NextApiRequest,
@@ -30,6 +29,7 @@ export default async function handler(
           .json({ success: false, message: 'Invalid credentials' });
       }
     } catch (error) {
+      console.error('Error validating token:', error);
       res.status(500).json({ success: false, message: 'Login failed' });
     }
   } else if (req.method === 'DELETE') {

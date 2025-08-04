@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -13,35 +13,17 @@ export default async function handler(
         orderBy: { key: 'asc' },
       });
 
-      const formattedSettings = settings.reduce(
-        (acc, setting) => {
-          let value = setting.value;
-
-          // Parse value based on type
-          if (setting.type === 'number') {
-            value = parseFloat(value);
-          } else if (setting.type === 'boolean') {
-            value = value === 'true';
-          } else if (setting.type === 'json') {
-            try {
-              value = JSON.parse(value);
-            } catch {
-              value = value;
-            }
-          }
-
-          acc[setting.key] = {
-            value,
-            type: setting.type,
-            description: setting.description,
-          };
-          return acc;
-        },
-        {} as Record<string, any>,
-      );
+      const formattedSettings = settings.map((setting) => ({
+        id: setting.id,
+        key: setting.key,
+        value: setting.value,
+        type: setting.type,
+        description: setting.description,
+      }));
 
       res.status(200).json(formattedSettings);
     } catch (error) {
+      console.error('Error fetching settings:', error);
       res.status(500).json({ error: 'Failed to fetch settings' });
     }
   } else if (req.method === 'POST') {
@@ -67,6 +49,7 @@ export default async function handler(
 
       res.status(201).json(setting);
     } catch (error) {
+      console.error('Error creating setting:', error);
       res.status(500).json({ error: 'Failed to save setting' });
     }
   } else if (req.method === 'PUT') {
@@ -85,6 +68,7 @@ export default async function handler(
 
       res.status(200).json(setting);
     } catch (error) {
+      console.error('Error updating setting:', error);
       res.status(500).json({ error: 'Failed to update setting' });
     }
   } else if (req.method === 'DELETE') {
@@ -97,6 +81,7 @@ export default async function handler(
 
       res.status(200).json({ message: 'Setting deleted successfully' });
     } catch (error) {
+      console.error('Error deleting setting:', error);
       res.status(500).json({ error: 'Failed to delete setting' });
     }
   } else {

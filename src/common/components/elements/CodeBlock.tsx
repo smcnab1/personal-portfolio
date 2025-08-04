@@ -40,7 +40,7 @@ const CodeBlock = ({
   ...props
 }: CodeBlockProps) => {
   const [isCopied, setIsCopied] = useState<boolean>(false);
-  const [value, copy] = useCopyToClipboard();
+  const [, copy] = useCopyToClipboard();
   const match = /language-(\w+)/.exec(className || '');
 
   const handleCopy = (code: string) => {

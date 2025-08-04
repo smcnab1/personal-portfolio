@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
+
+import { BlogItemProps } from '@/common/types/blog';
 import { CareerProps } from '@/common/types/careers';
 import { CertProps } from '@/common/types/certs';
 import { EducationProps } from '@/common/types/education';
-import { PublicationProps } from '@/common/types/publications';
 import { ProjectItemProps } from '@/common/types/projects';
-import { BlogItemProps } from '@/common/types/blog';
+import { PublicationProps } from '@/common/types/publications';
 
 const prisma = new PrismaClient();
 
@@ -152,7 +153,7 @@ export class CMS {
   }
 
   // Site settings
-  static async getSiteSettings(): Promise<Record<string, any>> {
+  static async getSiteSettings(): Promise<Record<string, unknown>> {
     try {
       const settings = await prisma.siteSettings.findMany({
         orderBy: { key: 'asc' },
@@ -160,24 +161,24 @@ export class CMS {
 
       return settings.reduce(
         (acc, setting) => {
-          let value = setting.value;
+          let value: unknown = setting.value;
 
           if (setting.type === 'number') {
-            value = parseFloat(value);
+            value = parseFloat(value as string);
           } else if (setting.type === 'boolean') {
             value = value === 'true';
           } else if (setting.type === 'json') {
             try {
-              value = JSON.parse(value);
+              value = JSON.parse(value as string);
             } catch {
-              value = value;
+              // Keep original value if JSON parsing fails
             }
           }
 
           acc[setting.key] = value;
           return acc;
         },
-        {} as Record<string, any>,
+        {} as Record<string, unknown>,
       );
     } catch (error) {
       console.error('Failed to fetch site settings:', error);

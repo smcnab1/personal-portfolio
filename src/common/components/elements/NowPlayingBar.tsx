@@ -1,5 +1,4 @@
 import { Popover } from '@headlessui/react';
-import Image from 'next/image';
 import { useState } from 'react';
 import { BsSpotify as SpotifyIcon } from 'react-icons/bs';
 import useSWR from 'swr';
@@ -9,6 +8,7 @@ import { fetcher } from '@/services/fetcher';
 
 import AnimatedBars from './AnimatedBars';
 import DevicePopover from './DevicePopover';
+import Image from './Image';
 import PlayerPopover from './PlayerPopover';
 
 const NowPlayingBar = () => {
@@ -28,7 +28,9 @@ const NowPlayingBar = () => {
   const activeDevice = devicesData?.find((device) => device.is_active);
 
   const handleOpenSongUrl = (url?: string) => {
-    url && window.open(url, '_blank');
+    if (url) {
+      window.open(url, '_blank');
+    }
   };
 
   if (!playingData?.songUrl) return null;

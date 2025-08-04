@@ -1,10 +1,11 @@
 import { PrismaClient } from '@prisma/client';
+
+import { ABOUT } from '@/common/constant/about';
 import { CAREERS } from '@/common/constant/careers';
 import { CERTS } from '@/common/constant/certs';
 import { EDUCATION } from '@/common/constant/education';
-import { PUBLICATIONS } from '@/common/constant/publications';
 import { PROJECTS } from '@/common/constant/projects';
-import { ABOUT } from '@/common/constant/about';
+import { PUBLICATIONS } from '@/common/constant/publications';
 
 const prisma = new PrismaClient();
 
