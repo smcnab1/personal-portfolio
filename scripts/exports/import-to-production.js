@@ -18,7 +18,7 @@ async function importData() {
     console.log('🚀 Starting data import...');
 
     // Load the complete export
-    const exportPath = path.join(__dirname, 'exports', 'complete-export.json');
+    const exportPath = path.join(__dirname, 'complete-export.json');
 
     if (!fs.existsSync(exportPath)) {
       throw new Error(

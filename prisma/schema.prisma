@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
 model Blog {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   title     String
   content   String
   excerpt   String?
@@ -20,7 +20,7 @@ model Blog {
 }
 
 model Career {
-  id               Int      @id @default(autoincrement())
+  id               String   @id @default(cuid())
   position         String
   company          String
   companyLegalName String?
@@ -42,7 +42,7 @@ model Career {
 }
 
 model Certification {
-  id           Int      @id @default(autoincrement())
+  id           String   @id @default(cuid())
   membership   String
   organisation String
   logo         String?
@@ -61,7 +61,7 @@ model Certification {
 }
 
 model Education {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   degree    String
   school    String
   major     String?
@@ -79,7 +79,7 @@ model Education {
 }
 
 model Publication {
-  id           Int      @id @default(autoincrement())
+  id           String   @id @default(cuid())
   title        String
   journal      String
   logo         String?
@@ -98,7 +98,7 @@ model Publication {
 }
 
 model Project {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(cuid())
   title       String
   slug        String   @unique
   description String
@@ -114,14 +114,14 @@ model Project {
 }
 
 model About {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 model SiteSettings {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(cuid())
   key         String   @unique
   value       String
   description String?
@@ -131,7 +131,7 @@ model SiteSettings {
 }
 
 model CMSUser {
-  id        Int      @id @default(autoincrement())
+  id        String   @id @default(cuid())
   email     String   @unique
   password  String
   name      String?
