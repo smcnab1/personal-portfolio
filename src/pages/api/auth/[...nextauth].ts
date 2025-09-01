@@ -58,16 +58,35 @@ export default NextAuth({
         if (!credentials?.email || !credentials?.password) return null;
 
         try {
+          console.log('🔐 Attempting credentials authentication...');
+          console.log('Email:', credentials.email);
+          console.log(
+            'Password provided:',
+            credentials.password ? 'Yes' : 'No',
+          );
+
           const user = await prisma.cMSUser.findUnique({
             where: { email: credentials.email },
           });
 
-          if (!user) return null;
+          console.log('User found:', user ? 'Yes' : 'No');
+          if (user) {
+            console.log('User ID:', user.id);
+            console.log('User role:', user.role);
+            console.log('Password hash exists:', user.password ? 'Yes' : 'No');
+          }
+
+          if (!user) {
+            console.log('❌ User not found');
+            return null;
+          }
 
           const isValid = await bcrypt.compare(
             credentials.password,
             user.password,
           );
+          console.log('Password validation result:', isValid);
+
           return isValid
             ? ({
                 id: user.id,
@@ -78,7 +97,7 @@ export default NextAuth({
               } as any)
             : null;
         } catch (error) {
-          console.error('Auth error:', error);
+          console.error('❌ Auth error:', error);
           return null;
         }
       },

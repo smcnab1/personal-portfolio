@@ -6,7 +6,7 @@ export default withAuth(
     const token = req.nextauth.token;
     const isCMSRoute = req.nextUrl.pathname.startsWith('/cms');
 
-    // If accessing CMS routes, check for proper access
+    // If accessing CMS routes and user is authenticated, check for proper access
     if (isCMSRoute && token) {
       // Only allow credentials provider users or users with admin/editor roles
       const hasCMSAccess =
@@ -24,9 +24,9 @@ export default withAuth(
   {
     callbacks: {
       authorized: ({ token, req }) => {
-        // For CMS routes, require authentication
+        // For CMS routes, allow access (authentication will be handled by the page)
         if (req.nextUrl.pathname.startsWith('/cms')) {
-          return !!token;
+          return true;
         }
 
         // For other routes, allow access

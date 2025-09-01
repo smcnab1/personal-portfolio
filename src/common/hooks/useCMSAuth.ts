@@ -8,24 +8,35 @@ export const useCMSAuth = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    console.log('useCMSAuth - Status:', status);
+    console.log('useCMSAuth - Session:', session);
+    console.log('useCMSAuth - User:', session?.user);
+
     if (status === 'loading') return;
 
     setIsLoading(false);
 
     // Redirect to CMS signin if not authenticated
     if (status === 'unauthenticated') {
+      console.log('useCMSAuth - Redirecting to CMS signin');
       router.push('/auth/cms-signin?callbackUrl=/cms');
       return;
     }
 
     // Check if user has CMS access
     if (status === 'authenticated' && session?.user) {
+      console.log('useCMSAuth - User authenticated, checking access');
       // Only allow credentials provider users or users with admin/editor roles
       const hasCMSAccess =
         session.user.provider === 'credentials' ||
         ['admin', 'editor'].includes(session.user.role);
 
+      console.log('useCMSAuth - Has CMS access:', hasCMSAccess);
+      console.log('useCMSAuth - User provider:', session.user.provider);
+      console.log('useCMSAuth - User role:', session.user.role);
+
       if (!hasCMSAccess) {
+        console.log('useCMSAuth - Redirecting OAuth user to home');
         // Redirect OAuth users without CMS access
         router.push('/');
         return;
