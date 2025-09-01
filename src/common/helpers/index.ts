@@ -1,5 +1,5 @@
 import { format, parseISO } from 'date-fns';
-import { utcToZonedTime } from 'date-fns-tz';
+import { toZonedTime } from 'date-fns-tz';
 
 import { ChapterGroupProps, MdxFileContentProps } from '../types/learn';
 
@@ -16,7 +16,7 @@ export const formatDate = (date: string, type = 'MMMM dd, yyyy') => {
   }
 
   const formattedDate = format(
-    utcToZonedTime(parseISO(date), 'Europe/London'),
+    toZonedTime(parseISO(date), 'Europe/London'),
     type,
   );
   return formattedDate;
@@ -83,4 +83,25 @@ export const calculateReadingTime = (content: string, wordsPerMinute = 5) => {
     cleanedContent.split(/\s+/).length / wordsPerMinute,
   );
   return readingTimeMinutes;
+};
+
+/**
+ * Safely parse stacks data that could be either JSON or comma-separated strings
+ * @param stacksData - The stacks data to parse
+ * @returns Array of stack strings
+ */
+export const parseStacks = (stacksData: string | null): string[] => {
+  if (!stacksData) return [];
+
+  try {
+    // Try to parse as JSON first
+    const parsed = JSON.parse(stacksData);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    // If JSON parsing fails, treat as comma-separated string
+    return stacksData
+      .split(',')
+      .map((s) => s.trim())
+      .filter((s) => s.length > 0);
+  }
 };

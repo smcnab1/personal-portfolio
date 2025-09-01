@@ -7,13 +7,12 @@ import {
 } from 'react-icons/bs';
 import {
   FiBookOpen as LearnIcon,
+  FiBriefcase as LegalIcon,
   FiCoffee as ProjectIcon,
-  FiCpu as DashboardIcon,
   FiPieChart as AnalyticsIcon,
   FiPocket as HomeIcon,
   FiRss as BlogIcon,
   FiUser as ProfileIcon,
-  FiBriefcase as LegalIcon,
 } from 'react-icons/fi';
 import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
 import { SiJavascript, SiOrcid } from 'react-icons/si';
@@ -33,39 +32,12 @@ export const MENU_ITEMS: MenuItemProps[] = [
     type: 'Pages',
   },
   {
-    title: 'Dashboard',
-    href: '/dashboard',
-    icon: <DashboardIcon size={iconSize} />,
+    title: 'Projects',
+    href: '/projects',
+    icon: <ProjectIcon size={iconSize} />,
     isShow: true,
     isExternal: false,
-    eventName: 'Pages: Dashboard',
-    type: 'Pages',
-  },
-    {
-      title: 'Projects',
-      href: '/projects',
-      icon: <ProjectIcon size={iconSize} />,
-      isShow: true,
-      isExternal: false,
-      eventName: 'Pages: Projects',
-      type: 'Pages',
-    },
-  {
-    title: 'Blog',
-    href: '/blog',
-    icon: <BlogIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Blog',
-    type: 'Pages',
-  },
-  {
-    title: 'Learn',
-    href: '/learn',
-    icon: <LearnIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Learn',
+    eventName: 'Pages: Projects',
     type: 'Pages',
   },
   {
@@ -106,17 +78,7 @@ export const MENU_ITEMS: MenuItemProps[] = [
   },
 ];
 
-export const MENU_APPS: MenuItemProps[] = [
-  {
-    title: 'JS Playground',
-    href: '/playground',
-    icon: <SiJavascript size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Playground',
-    type: 'Pages',
-  },
-];
+export const MENU_APPS: MenuItemProps[] = [];
 
 export const SOCIAL_MEDIA: MenuItemProps[] = [
   {
@@ -172,14 +134,4 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
   },
 ];
 
-export const EXTERNAL_LINKS: MenuItemProps[] = [
-    {
-      title: 'Analytics',
-      href: 'https://analytics.sammcnab.co.uk/share/1jaYuaR4rKDNomDN/sammcnab.co.uk',
-      icon: <AnalyticsIcon size={iconSize} />,
-      isShow: true,
-      isExternal: true,
-      eventName: 'External Link: Analytics',
-      type: 'Link',
-    },
-];
+export const EXTERNAL_LINKS: MenuItemProps[] = [];

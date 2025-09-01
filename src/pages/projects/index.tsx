@@ -1,26 +1,53 @@
-import { GetStaticProps, NextPage } from 'next';
+import { NextPage } from 'next';
 import { NextSeo } from 'next-seo';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Container from '@/common/components/elements/Container';
 import PageHeading from '@/common/components/elements/PageHeading';
-import prisma from '@/common/libs/prisma';
 import { ProjectItemProps } from '@/common/types/projects';
 import Projects from '@/modules/projects';
-
-interface ProjectsPageProps {
-  projects: ProjectItemProps[];
-}
 
 const PAGE_TITLE = 'Projects';
 const PAGE_DESCRIPTION =
   'Several projects that I have worked on, both private and open source.';
 
-const ProjectsPage: NextPage<ProjectsPageProps> = ({ projects }) => {
+const ProjectsPage: NextPage = () => {
+  const [projects, setProjects] = useState<ProjectItemProps[]>([]);
   const [visibleProjects, setVisibleProjects] = useState(6);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        const data = await response.json();
+        console.log('Projects API response:', data);
+        console.log('Data type:', typeof data);
+        console.log('Is array:', Array.isArray(data));
+        console.log('Data structure:', data);
+        setProjects(data);
+      } catch (error) {
+        console.error('Failed to fetch projects:', error);
+        setProjects([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
 
   const loadMore = () => setVisibleProjects((prev) => prev + 2);
-  const hasMore = visibleProjects < projects.length;
+  const hasMore = Array.isArray(projects) && visibleProjects < projects.length;
+
+  if (loading) {
+    return (
+      <Container data-aos='fade-up'>
+        <PageHeading title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
+        <div className='py-8 text-center'>Loading projects...</div>
+      </Container>
+    );
+  }
 
   return (
     <>
@@ -28,7 +55,9 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({ projects }) => {
       <Container data-aos='fade-up'>
         <PageHeading title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
         <Projects
-          projects={projects.slice(0, visibleProjects)}
+          projects={
+            Array.isArray(projects) ? projects.slice(0, visibleProjects) : []
+          }
           loadMore={loadMore}
           hasMore={hasMore}
         />
@@ -38,23 +67,3 @@ const ProjectsPage: NextPage<ProjectsPageProps> = ({ projects }) => {
 };
 
 export default ProjectsPage;
-
-export const getStaticProps: GetStaticProps = async () => {
-  const response = await prisma.projects.findMany({
-    orderBy: [
-      {
-        is_featured: 'desc',
-      },
-      {
-        updated_at: 'desc',
-      },
-    ],
-  });
-
-  return {
-    props: {
-      projects: JSON.parse(JSON.stringify(response)),
-    },
-    revalidate: 1,
-  };
-};

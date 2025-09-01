@@ -12,6 +12,9 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID as string,
 };
 
-const firebase = initializeApp(firebaseConfig);
+// Only initialize Firebase if all required config is present
+const firebase = process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID
+  ? initializeApp(firebaseConfig)
+  : null;
 
 export { firebase };

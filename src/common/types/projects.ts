@@ -1,15 +1,18 @@
 export interface ProjectItemProps {
+  id: string;
   title: string;
   slug: string;
   description: string;
-  image: string;
-  link_demo?: string;
-  link_github?: string;
-  stacks: string;
   content?: string;
-  is_show: boolean;
-  is_featured: boolean;
-  updated_at: Date;
+  image: string | null;
+  linkDemo?: string | null;
+  linkGithub?: string | null;
+  stacks: string | null;
+  isShow: boolean;
+  isFeatured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+  sortOrder: number;
 }
 
 export interface ProjectsProps {

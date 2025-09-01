@@ -16,10 +16,12 @@ const Chat = ({ isWidget = false }: { isWidget?: boolean }) => {
 
   const [messages, setMessages] = useState<MessageProps[]>([]);
 
-  const database = getDatabase(firebase);
+  const database = firebase ? getDatabase(firebase) : null;
   const databaseChat = process.env.NEXT_PUBLIC_FIREBASE_CHAT_DB as string;
 
   const handleSendMessage = (message: string) => {
+    if (!database) return;
+
     const messageId = uuidv4();
     const messageRef = ref(database, `${databaseChat}/${messageId}`);
 
@@ -35,6 +37,8 @@ const Chat = ({ isWidget = false }: { isWidget?: boolean }) => {
   };
 
   const handleDeleteMessage = (id: string) => {
+    if (!database) return;
+
     const messageRef = ref(database, `${databaseChat}/${id}`);
 
     if (messageRef) {
@@ -43,6 +47,8 @@ const Chat = ({ isWidget = false }: { isWidget?: boolean }) => {
   };
 
   useEffect(() => {
+    if (!database) return;
+
     const messagesRef = ref(database, databaseChat);
     onValue(messagesRef, (snapshot) => {
       const messagesData = snapshot.val();

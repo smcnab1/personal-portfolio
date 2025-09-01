@@ -14,12 +14,12 @@ export default async function handler(
 
   if (req.method === 'GET') {
     try {
-      const contentMeta = await prisma.contentmeta.findUnique({
+      const blogPost = await prisma.blog.findUnique({
         where: { slug: slug as string },
         select: { views: true },
       });
 
-      const contentViewsCount = contentMeta?.views ?? 0;
+      const contentViewsCount = blogPost?.views ?? 0;
 
       const response: ResponseData = {
         views: contentViewsCount,
@@ -27,22 +27,30 @@ export default async function handler(
 
       return res.json(response);
     } catch (error) {
-      return res.status(500).json({ error: 'Failed to fetch content meta' });
+      console.error('Error fetching view count:', error);
+      res.status(500).json({ error: 'Failed to get views' });
     }
   } else if (req.method === 'POST') {
     try {
-      const contentMeta = await prisma.contentmeta.update({
-        where: { slug: slug as string },
-        data: {
-          views: {
-            increment: 1,
-          },
-        },
-        select: { views: true },
+      const { slug } = req.body;
+
+      const post = await prisma.blog.findUnique({
+        where: { slug },
       });
-      return res.json(contentMeta);
+
+      if (!post) {
+        return res.status(404).json({ error: 'Post not found' });
+      }
+
+      const updatedPost = await prisma.blog.update({
+        where: { slug },
+        data: { views: { increment: 1 } },
+      });
+
+      res.status(200).json({ views: updatedPost.views });
     } catch (error) {
-      return res.status(500).json({ error: 'Failed to update views count' });
+      console.error('Error incrementing view count:', error);
+      res.status(500).json({ error: 'Failed to update views' });
     }
   } else {
     return res.status(405).json({ error: 'Method not allowed' });

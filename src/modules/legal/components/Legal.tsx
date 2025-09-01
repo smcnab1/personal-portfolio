@@ -1,14 +1,14 @@
 import {
-  HiFingerPrint as PrivacyIcon,
   HiCash as PaymentTermsIcon,
+  HiFingerPrint as PrivacyIcon,
   HiGlobe as CookiesIcon,
 } from 'react-icons/hi';
 
 import { Tabs } from '@/common/components/elements/Tabs';
 
+import CookiesPolicy from './CookiesPolicy';
 import PaymentTerms from './PaymentTerms';
 import PrivacyPolicy from './PrivacyPolicy';
-import CookiesPolicy from './CookiesPolicy';
 
 const Legal = () => {
   const TABS = [

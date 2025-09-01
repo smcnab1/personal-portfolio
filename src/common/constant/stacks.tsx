@@ -1,4 +1,8 @@
+import React from 'react';
 import { BsFillBootstrapFill, BsRobot } from 'react-icons/bs';
+import { FaMicrosoft } from 'react-icons/fa';
+import { GiPublicSpeaker } from 'react-icons/gi';
+import { MdOutlineHealthAndSafety } from 'react-icons/md';
 import {
   SiCss3,
   SiExpress,
@@ -9,25 +13,19 @@ import {
   SiNextdotjs,
   SiNginx,
   SiNodedotjs,
+  SiOpenai,
   SiPrisma,
   SiReact,
   SiStyledcomponents,
   SiTailwindcss,
   SiTypescript,
+  SiVercel,
   SiVuedotjs,
   SiWordpress,
-  SiPowerapps,
-  SiPowerautomate,
-  SiPowerbi,
-  SiMicrosoftsharepoint,
-  SiVercel,
-  SiOpenai,
 } from 'react-icons/si';
-import { MdOutlineHealthAndSafety } from 'react-icons/md';
-import { GiPublicSpeaker } from "react-icons/gi";
 
 export type stacksProps = {
-  [key: string]: JSX.Element;
+  [key: string]: React.ReactElement;
 };
 
 const iconSize = 20;
@@ -57,12 +55,15 @@ export const STACKS: stacksProps = {
   CSS: <SiCss3 size={iconSize} className='text-blue-300' />,
   Express: <SiExpress size={iconSize} />,
   Jquery: <SiJquery size={iconSize} />,
-  PowerApps: <SiPowerapps size={iconSize} className='text-blue-500'/>,
-  PowerAutomate: <SiPowerautomate size={iconSize} className='text-purple-500'/>,
-  PowerBI: <SiPowerbi size={iconSize} className='text-yellow-400'/>,
-  SharePoint: <SiMicrosoftsharepoint size={iconSize} className='text-teal-500'/>,
+  PowerAutomate: <FaMicrosoft size={iconSize} className='text-purple-500' />,
+  PowerBI: <FaMicrosoft size={iconSize} className='text-yellow-400' />,
+  SharePoint: <FaMicrosoft size={iconSize} className='text-teal-500' />,
   Vercel: <SiVercel size={iconSize} />,
-  OpenAI: <SiOpenai size={iconSize} className='text-green-500'/>,
-  Healthcare: <MdOutlineHealthAndSafety size={iconSize} className='text-red-500'/>,
-  'Public Speaking': <GiPublicSpeaker size={iconSize} className='text-emerald-500'/>,
+  OpenAI: <SiOpenai size={iconSize} className='text-green-500' />,
+  Healthcare: (
+    <MdOutlineHealthAndSafety size={iconSize} className='text-red-500' />
+  ),
+  'Public Speaking': (
+    <GiPublicSpeaker size={iconSize} className='text-emerald-500' />
+  ),
 };

@@ -10,7 +10,7 @@ interface MarkdownRendererProps {
 }
 
 interface TableProps {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 const Table = ({ children }: TableProps) => (
@@ -20,7 +20,7 @@ const Table = ({ children }: TableProps) => (
 );
 
 const MDXComponent = ({ children }: MarkdownRendererProps) => {
-  const formattedChildren = children.replace(/\\n/g, '\n')
+  const formattedChildren = children.replace(/\\n/g, '\n');
   return (
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
@@ -44,10 +44,10 @@ const MDXComponent = ({ children }: MarkdownRendererProps) => {
             {...props}
           />
         ),
-        ul: ({ ordered, ...props }) => (
+        ul: (props) => (
           <ul className='list-disc space-y-3 pb-2 pl-10' {...props} />
         ),
-        ol: ({ ordered, ...props }) => (
+        ol: (props) => (
           <ol className='list-decimal space-y-3 pb-2 pl-10' {...props} />
         ),
         code: (props) => <CodeBlock {...props} />,

@@ -5,7 +5,7 @@ export interface CertProps {
   type: string;
   start_date: string;
   end_date: string | null;
-  industry: string;
+  industry: string | null;
   link: string | null;
   description?: string[];
 }

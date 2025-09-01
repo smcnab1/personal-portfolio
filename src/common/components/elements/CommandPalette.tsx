@@ -9,7 +9,6 @@ import {
   BiSun as LightModeIcon,
 } from 'react-icons/bi';
 import { HiOutlineChat as AiIcon } from 'react-icons/hi';
-import { useDebounce } from 'usehooks-ts';
 
 import {
   EXTERNAL_LINKS,
@@ -17,6 +16,7 @@ import {
   SOCIAL_MEDIA,
 } from '@/common/constant/menu';
 import { CommandPaletteContext } from '@/common/context/CommandPaletteContext';
+import { useDebounce } from '@/common/hooks/useDebounce';
 import useIsMobile from '@/common/hooks/useIsMobile';
 import { MenuItemProps } from '@/common/types/menu';
 import AiLoading from '@/modules/cmdpallete/components/AiLoading';
@@ -206,14 +206,14 @@ const CommandPalette = () => {
       >
         <Transition.Child
           as={Fragment}
-          enter='transition-opacity duration-200 ease-out'
+          enter='transition-opacity duration-100 ease-out'
           enterFrom='opacity-0'
           enterTo='opacity-100'
           leave='transition-opacity duration-100 ease-in'
           leaveFrom='opacity-100'
           leaveTo='opacity-0'
         >
-          <Dialog.Overlay className='fixed inset-0 bg-neutral-600/90 dark:bg-neutral-900/90' />
+          <div className='fixed inset-0 bg-neutral-600/90 dark:bg-neutral-900/90' />
         </Transition.Child>
 
         <Dialog.Panel>

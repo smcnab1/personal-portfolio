@@ -47,6 +47,7 @@ export const sendMessage = async (prompt: string) => {
 
     return data?.reply;
   } catch (error) {
-    return '';
+    console.error('Error calling ChatGPT API:', error);
+    return null;
   }
 };

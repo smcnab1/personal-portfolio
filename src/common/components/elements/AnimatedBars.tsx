@@ -16,7 +16,7 @@ const AnimatedBars = ({ variant = 'bg-neutral-800' }: AnimatedBarsProps) => {
         }}
         transition={{
           duration: 1,
-          easings: 'easeInOut',
+          ease: 'easeInOut',
           repeat: Infinity,
         }}
         className={`mr-[1px] h-2 w-1 opacity-75 ${color}`}
@@ -28,7 +28,7 @@ const AnimatedBars = ({ variant = 'bg-neutral-800' }: AnimatedBarsProps) => {
         }}
         transition={{
           duration: 1.5,
-          easings: 'easeInOut',
+          ease: 'easeInOut',
           repeat: Infinity,
           repeatDelay: 0.2,
         }}
@@ -41,7 +41,7 @@ const AnimatedBars = ({ variant = 'bg-neutral-800' }: AnimatedBarsProps) => {
         }}
         transition={{
           duration: 1,
-          easings: 'easeInOut',
+          ease: 'easeInOut',
           repeat: Infinity,
           repeatDelay: 0.2,
         }}
@@ -55,7 +55,7 @@ const AnimatedBars = ({ variant = 'bg-neutral-800' }: AnimatedBarsProps) => {
         }}
         transition={{
           duration: 1.5,
-          easings: 'easeInOut',
+          ease: 'easeInOut',
           repeat: Infinity,
           repeatDelay: 0.3,
         }}

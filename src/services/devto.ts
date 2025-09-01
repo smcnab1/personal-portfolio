@@ -55,7 +55,7 @@ export const getBlogData = async ({
 export const getBlogDetail = async ({
   id,
 }: {
-  id: number;
+  id: string;
 }): Promise<{ status: number; data: any }> => {
   const params = new URLSearchParams({ username: USERNAME });
 
@@ -107,7 +107,7 @@ export const getBlogComment = async ({
 export const getBlogViews = async ({
   id,
 }: {
-  id: number;
+  id: string;
 }): Promise<{ status: number; data: any }> => {
   const response = await axios.get(`${BLOG_URL}me/all`, {
     headers: {

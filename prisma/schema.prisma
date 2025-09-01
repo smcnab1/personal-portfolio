@@ -1,33 +1,142 @@
 generator client {
-  provider     = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider     = "postgresql"
-  url          = env("DATABASE_URL")
-  directUrl    = env("DIRECT_URL")
-  relationMode = "prisma"
+  provider = "sqlite"
+  url      = "file:./dev.db"
 }
 
-model projects {
-  id          Int      @id @default(autoincrement())
+model Blog {
+  id        String   @id @default(cuid())
+  title     String
+  content   String
+  excerpt   String?
+  slug      String   @unique
+  published Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  views     Int      @default(0)
+}
+
+model Career {
+  id               String   @id @default(cuid())
+  position         String
+  company          String
+  companyLegalName String?
+  logo             String?
+  location         String
+  locationType     String?
+  type             String
+  startDate        String
+  endDate          String?
+  industry         String?
+  link             String?
+  responsibilities String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  isActive         Boolean  @default(true)
+  sortOrder        Int      @default(0)
+
+  @@unique([position, company])
+}
+
+model Certification {
+  id           String   @id @default(cuid())
+  membership   String
+  organisation String
+  logo         String?
+  type         String
+  startDate    String
+  endDate      String?
+  industry     String?
+  link         String?
+  description  String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  isActive     Boolean  @default(true)
+  sortOrder    Int      @default(0)
+
+  @@unique([membership, organisation])
+}
+
+model Education {
+  id        String   @id @default(cuid())
+  degree    String
+  school    String
+  major     String?
+  logo      String?
+  location  String?
+  startYear Int
+  endYear   Int?
+  link      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+
+  @@unique([degree, school])
+}
+
+model Publication {
+  id           String   @id @default(cuid())
+  title        String
+  journal      String
+  logo         String?
+  location     String?
+  locationType String?
+  type         String
+  startDate    String
+  link         String?
+  overview     String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  isActive     Boolean  @default(true)
+  sortOrder    Int      @default(0)
+
+  @@unique([title, journal])
+}
+
+model Project {
+  id          String   @id @default(cuid())
   title       String
   slug        String   @unique
   description String
-  image       String
-  link_demo   String?
-  link_github String?
-  stacks      String
-  is_show     Boolean  @default(true)
-  updated_at  DateTime @default(now())
-  content     String?  @db.Text
-  is_featured Boolean  @default(false)
+  content     String?
+  image       String?
+  linkDemo    String?
+  linkGithub  String?
+  stacks      String?
+  isShow      Boolean  @default(true)
+  isFeatured  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  sortOrder   Int      @default(0)
 }
 
-model contentmeta {
-  id          Int      @id @default(autoincrement())
-  slug        String   @unique
-  type        String
-  views       Int      @default(0)
-  updated_at  DateTime @default(now())
+model About {
+  id        String   @id @default(cuid())
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSettings {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String
+  description String?
+  type        String   @default("string")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model CMSUser {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

@@ -27,14 +27,14 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
         openGraph={{
           type: 'article',
           article: {
-            publishedTime: project?.updated_at.toString(),
-            modifiedTime: project?.updated_at.toString(),
+            publishedTime: project?.updatedAt.toString(),
+            modifiedTime: project?.updatedAt.toString(),
             authors: ['Sam McNab'],
           },
           url: canonicalUrl,
           images: [
             {
-              url: project?.image,
+              url: project?.image || '/images/placeholder.png',
             },
           ],
           siteName: 'Blog Sam McNab',
@@ -52,7 +52,7 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
 export default ProjectsDetailPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const response = await prisma.projects.findUnique({
+  const response = await prisma.project.findUnique({
     where: {
       slug: String(params?.slug),
     },

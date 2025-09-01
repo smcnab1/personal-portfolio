@@ -109,8 +109,8 @@ const ContactForm = () => {
       <div className='my-5 flex items-center gap-2 dark:text-neutral-400'>
         <ClockIcon />
         <div className='text-sm'>
-          <span className='font-medium'>Avg. response:</span> 1-2 Hours (Working
-          Hours, Mon-Fri)
+          <span className='font-medium'>Avg. response:</span> 1-2 Days (Working
+          Days, Mon-Fri)
         </div>
       </div>
     </form>

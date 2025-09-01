@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { useDebounce } from 'usehooks-ts';
 
 import EmptyState from '@/common/components/elements/EmptyState';
 import Pagination from '@/common/components/elements/Pagination';
 import SearchBar from '@/common/components/elements/SearchBar';
 import BlogCardNewSkeleton from '@/common/components/skeleton/BlogCardNewSkeleton';
+import { useDebounce } from '@/common/hooks/useDebounce';
 import { BlogItemProps } from '@/common/types/blog';
 import { fetcher } from '@/services/fetcher';
 

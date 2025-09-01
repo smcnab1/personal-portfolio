@@ -33,7 +33,7 @@ const LearnContentPage: NextPage<ContentPageProps> = ({
   const { title, description } = content;
 
   const sortedSubContents = subContents.sort(
-    (a, b) => a.frontMatter.id - b.frontMatter.id,
+    (a, b) => parseInt(a.frontMatter.id) - parseInt(b.frontMatter.id),
   );
 
   const canonicalUrl = `https://sammcnab.co.uk/learn/${content?.slug}`;

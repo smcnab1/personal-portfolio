@@ -1,5 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import MonacoEditor, { EditorProps } from '@monaco-editor/react';
+import dynamic from 'next/dynamic';
+import { EditorProps } from '@monaco-editor/react';
+
+const MonacoEditor = dynamic(() => import('@monaco-editor/react'), {
+  ssr: false,
+  loading: () => (
+    <div className='flex h-[300px] items-center justify-center bg-gray-900 text-white'>
+      Loading editor...
+    </div>
+  ),
+});
 
 interface CodeEditorProps {
   code: string;
@@ -13,7 +23,7 @@ const editorConfig = {
   minimap: {
     enabled: false,
   },
-  wordWrap: 'on',
+  wordWrap: 'on' as const,
   scrollbar: {
     verticalScrollbarSize: 9,
   },

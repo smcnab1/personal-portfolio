@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>https://www,sammcnab.co.uk</loc><lastmod>2024-06-24T06:35:09.128Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/about</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/blog</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/contact</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/dashboard</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/guestbook</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/learn</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/legal</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/projects</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/learn/js-fundamental</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
-<url><loc>https://www,sammcnab.co.uk/learn/problem-solving</loc><lastmod>2024-06-24T06:35:09.129Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk</loc><lastmod>2025-09-01T13:26:13.465Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/about</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/auth/cms-signin</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/auth/error</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/auth/signin</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/blog</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/cms</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/contact</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/guestbook</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/learn</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/legal</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/projects</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/learn/cmalt-portfolio</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
+<url><loc>https://www.sammcnab.co.uk/learn/problem-solving</loc><lastmod>2025-09-01T13:26:13.466Z</lastmod><changefreq>daily</changefreq><priority>0.7</priority></url>
 </urlset>
