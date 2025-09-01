@@ -11,11 +11,11 @@ interface LinkComponentProps {
 
 interface ProjectLinkProps {
   title?: string;
-  link_github?: string | null;
-  link_demo?: string | null;
+  linkGithub?: string | null;
+  linkDemo?: string | null;
 }
 
-const ProjectLink = ({ title, link_github, link_demo }: ProjectLinkProps) => {
+const ProjectLink = ({ title, linkGithub, linkDemo }: ProjectLinkProps) => {
   const LinkComponent = ({ url, text, icon }: LinkComponentProps) => {
     const eventName = `Click ${text} - Project ${title}`;
 
@@ -33,19 +33,19 @@ const ProjectLink = ({ title, link_github, link_demo }: ProjectLinkProps) => {
 
   return (
     <div className='flex gap-4'>
-      {link_github && (
+      {linkGithub && (
         <LinkComponent
-          url={link_github}
+          url={linkGithub}
           text='Source Code'
           icon={<GithubIcon size={22} />}
         />
       )}
-      {link_github && link_demo && (
+      {linkGithub && linkDemo && (
         <span className='text-neutral-400 dark:text-neutral-600'>|</span>
       )}
-      {link_demo && (
+      {linkDemo && (
         <LinkComponent
-          url={link_demo}
+          url={linkDemo}
           text='Live Demo'
           icon={<LinkIcon size={22} />}
         />

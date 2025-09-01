@@ -13,7 +13,7 @@ interface ProjectsComponentProps {
 }
 
 const Projects = ({ projects, loadMore, hasMore }: ProjectsComponentProps) => {
-  const filteredProjects = projects.filter((project) => project?.is_show);
+  const filteredProjects = projects.filter((project) => project?.isShow);
 
   if (filteredProjects.length === 0) {
     return <EmptyState message='No Data' />;
@@ -30,7 +30,7 @@ const Projects = ({ projects, loadMore, hasMore }: ProjectsComponentProps) => {
       <div className='grid gap-5 px-1 pt-2 sm:grid-cols-2'>
         {filteredProjects.map((project, index) => (
           <motion.div
-            key={index}
+            key={project.id}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}

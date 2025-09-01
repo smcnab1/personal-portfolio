@@ -31,7 +31,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Home',
     type: 'Pages',
   },
-
   {
     title: 'Projects',
     href: '/projects',
@@ -39,24 +38,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     isShow: true,
     isExternal: false,
     eventName: 'Pages: Projects',
-    type: 'Pages',
-  },
-  {
-    title: 'Blog',
-    href: '/blog',
-    icon: <BlogIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Blog',
-    type: 'Pages',
-  },
-  {
-    title: 'Learn',
-    href: '/learn',
-    icon: <LearnIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Learn',
     type: 'Pages',
   },
   {
@@ -97,17 +78,7 @@ export const MENU_ITEMS: MenuItemProps[] = [
   },
 ];
 
-export const MENU_APPS: MenuItemProps[] = [
-  {
-    title: 'JS Playground',
-    href: '/playground',
-    icon: <SiJavascript size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Playground',
-    type: 'Pages',
-  },
-];
+export const MENU_APPS: MenuItemProps[] = [];
 
 export const SOCIAL_MEDIA: MenuItemProps[] = [
   {
@@ -163,14 +134,4 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
   },
 ];
 
-export const EXTERNAL_LINKS: MenuItemProps[] = [
-  {
-    title: 'Analytics',
-    href: 'https://analytics.sammcnab.co.uk/share/1jaYuaR4rKDNomDN/sammcnab.co.uk',
-    icon: <AnalyticsIcon size={iconSize} />,
-    isShow: true,
-    isExternal: true,
-    eventName: 'External Link: Analytics',
-    type: 'Link',
-  },
-];
+export const EXTERNAL_LINKS: MenuItemProps[] = [];

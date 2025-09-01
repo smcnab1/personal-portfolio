@@ -12,11 +12,15 @@ import SettingsManager from '@/common/components/elements/CMS/SettingsManager';
 import { CMSTabs } from '@/common/components/elements/CMSTabs';
 import Container from '@/common/components/elements/Container';
 import Loading from '@/common/components/elements/Loading';
+import { useCMSAuth } from '@/common/hooks/useCMSAuth';
 
 const CMSInterface = () => {
-  const [authenticated, setAuthenticated] = useState(false);
-  const [loading, _setLoading] = useState(true);
+  const { isAuthenticated, isLoading, login, logout, user } = useCMSAuth();
   const [activeTab, setActiveTab] = useState('careers');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const tabs = [
     { id: 'careers', label: 'Careers', icon: '💼' },
@@ -28,33 +32,29 @@ const CMSInterface = () => {
     { id: 'settings', label: 'Settings', icon: '⚙️' },
   ];
 
-  useEffect(() => {
-    // Check if user is authenticated
-    const checkAuth = () => {
-      const cookies = document.cookie.split(';');
-      const authCookie = cookies.find((cookie) =>
-        cookie.trim().startsWith('cms-auth='),
-      );
-      if (authCookie && authCookie.includes('true')) {
-        setAuthenticated(true);
-      }
-    };
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoggingIn(true);
+    setLoginError('');
 
-    checkAuth();
-  }, []);
+    const result = await login(email, password);
 
-  const handleLogin = () => {
-    setAuthenticated(true);
-    document.cookie = 'cms-auth=true; path=/; max-age=86400'; // 24 hours
+    if (!result.success) {
+      setLoginError(result.error || 'Login failed');
+    }
+
+    setIsLoggingIn(false);
   };
 
-  const handleLogout = () => {
-    setAuthenticated(false);
-    document.cookie =
-      'cms-auth=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+  const handleLogout = async () => {
+    await logout();
   };
 
-  if (!authenticated) {
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!isAuthenticated) {
     return (
       <div className='flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8'>
         <div className='w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow dark:bg-gray-800'>
@@ -64,7 +64,7 @@ const CMSInterface = () => {
               Sign in to access the content management system
             </p>
           </div>
-          <form className='mt-8 space-y-6'>
+          <form onSubmit={handleLogin} className='mt-8 space-y-6'>
             <div className='space-y-4'>
               <div>
                 <label
@@ -79,6 +79,8 @@ const CMSInterface = () => {
                   type='email'
                   autoComplete='email'
                   required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className='w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white'
                   placeholder='admin@sammcnab.co.uk'
                 />
@@ -96,35 +98,35 @@ const CMSInterface = () => {
                   type='password'
                   autoComplete='current-password'
                   required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className='w-full rounded-md border border-gray-300 px-3 py-2 focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white'
                   placeholder='••••••••'
                 />
               </div>
             </div>
 
+            {loginError && (
+              <div className='rounded-md bg-red-50 p-4 dark:bg-red-900/20'>
+                <p className='text-sm text-red-800 dark:text-red-200'>
+                  {loginError}
+                </p>
+              </div>
+            )}
+
             <div>
               <button
-                type='button'
-                onClick={handleLogin}
-                className='w-full rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700'
+                type='submit'
+                disabled={isLoggingIn}
+                className='w-full rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50'
               >
-                Sign in
+                {isLoggingIn ? 'Signing in...' : 'Sign in'}
               </button>
-            </div>
-
-            <div className='text-center text-xs text-gray-500'>
-              <p>Default credentials:</p>
-              <p>Email: admin@sammcnab.co.uk</p>
-              <p>Password: admin123</p>
             </div>
           </form>
         </div>
       </div>
     );
-  }
-
-  if (loading) {
-    return <Loading />;
   }
 
   const renderTabContent = () => {
@@ -157,6 +159,12 @@ const CMSInterface = () => {
             <p className='mt-2 text-gray-600 dark:text-gray-400'>
               Manage your portfolio content and site settings
             </p>
+            {user && (
+              <p className='mt-1 text-sm text-gray-500 dark:text-gray-500'>
+                Logged in as {user.email} ({user.role}) via{' '}
+                {user.provider === 'credentials' ? 'CMS Login' : user.provider}
+              </p>
+            )}
           </div>
           <Button
             onClick={handleLogout}
@@ -167,6 +175,20 @@ const CMSInterface = () => {
         </div>
 
         <Card className='p-6'>
+          {user?.provider !== 'credentials' && (
+            <div className='mb-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4 dark:border-yellow-800 dark:bg-yellow-900/20'>
+              <div className='flex'>
+                <div className='ml-3'>
+                  <p className='text-sm text-yellow-800 dark:text-yellow-200'>
+                    <strong>Security Notice:</strong> You are accessing the CMS
+                    via {user?.provider}. For enhanced security, consider using
+                    the dedicated CMS login instead.
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           <CMSTabs
             tabs={tabs}
             activeTab={activeTab}

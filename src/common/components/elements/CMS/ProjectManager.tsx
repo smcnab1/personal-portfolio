@@ -6,10 +6,11 @@ import EmptyState from '@/common/components/elements/EmptyState';
 import Loading from '@/common/components/elements/Loading';
 
 interface Project {
-  id: number;
+  id: string;
   title: string;
   slug: string;
   description: string;
+  content?: string;
   image?: string;
   linkDemo?: string;
   linkGithub?: string;
@@ -17,18 +18,21 @@ interface Project {
   isShow: boolean;
   isFeatured: boolean;
   sortOrder: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 const ProjectManager = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editingId, setEditingId] = useState<string | null>(null);
   const [showForm, setShowForm] = useState(false);
   const [formData, setFormData] = useState<Partial<Project>>({
     title: '',
     slug: '',
     description: '',
+    content: '',
     image: '',
     linkDemo: '',
     linkGithub: '',
@@ -107,7 +111,7 @@ const ProjectManager = () => {
     setShowForm(true);
   };
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     if (!confirm('Are you sure you want to delete this project?')) return;
 
     try {
@@ -127,7 +131,7 @@ const ProjectManager = () => {
     }
   };
 
-  const handleHardDelete = async (id: number) => {
+  const handleHardDelete = async (id: string) => {
     if (
       !confirm(
         'Are you sure you want to permanently delete this project? This action cannot be undone.',
@@ -159,6 +163,7 @@ const ProjectManager = () => {
       title: '',
       slug: '',
       description: '',
+      content: '',
       image: '',
       linkDemo: '',
       linkGithub: '',
@@ -293,6 +298,19 @@ const ProjectManager = () => {
                 className='h-32 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white'
                 placeholder='Describe your project...'
                 required
+              />
+            </div>
+            <div>
+              <label className='mb-1 block text-sm font-medium'>
+                Content (Markdown)
+              </label>
+              <textarea
+                value={formData.content}
+                onChange={(e) =>
+                  setFormData({ ...formData, content: e.target.value })
+                }
+                className='h-48 w-full rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:outline-none dark:border-gray-600 dark:bg-gray-700 dark:text-white'
+                placeholder='Add detailed content in Markdown format...'
               />
             </div>
             <div className='flex items-center space-x-4'>

@@ -3,20 +3,23 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import prisma from '@/common/libs/prisma';
 
-type Data = {
-  status: boolean;
-  data?: any;
-  error?: any;
-};
-
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse<Data>,
+  res: NextApiResponse,
 ) {
+  if (req.method !== 'GET') {
+    return res.status(405).json({ message: 'Method not allowed' });
+  }
+
   try {
-    const response = await prisma.project.findMany();
-    res.status(200).json({ status: true, data: response });
+    const projects = await prisma.project.findMany({
+      where: { isShow: true },
+      orderBy: { sortOrder: 'asc' },
+    });
+
+    res.status(200).json(projects);
   } catch (error) {
-    res.status(200).json({ status: false, error: error });
+    console.error('Failed to fetch projects:', error);
+    res.status(500).json({ message: 'Failed to fetch projects' });
   }
 }

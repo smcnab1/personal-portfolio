@@ -6,6 +6,7 @@ import Card from '@/common/components/elements/Card';
 import Image from '@/common/components/elements/Image';
 import Tooltip from '@/common/components/elements/Tooltip';
 import { STACKS } from '@/common/constant/stacks';
+import { parseStacks } from '@/common/helpers';
 import { ProjectItemProps } from '@/common/types/projects';
 
 const ProjectCard = ({
@@ -14,14 +15,14 @@ const ProjectCard = ({
   description,
   image,
   stacks,
-  is_featured,
+  isFeatured,
 }: ProjectItemProps) => {
-  const stacksArray = stacks ? JSON.parse(stacks) : [];
+  const stacksArray = parseStacks(stacks);
 
   return (
     <Link href={`/projects/${slug}`}>
       <Card className='group relative cursor-pointer border border-neutral-200 dark:border-neutral-900 lg:hover:scale-[102%]'>
-        {is_featured && (
+        {isFeatured && (
           <div className='absolute right-0 top-0 z-[2] flex items-center gap-1 rounded-bl-xl rounded-tr-xl bg-lime-300 px-2 py-1 text-[13px] font-medium text-emerald-950'>
             <PinIcon size={15} />
             <span>Featured</span>

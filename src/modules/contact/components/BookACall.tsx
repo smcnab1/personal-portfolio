@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import  CalComponent30min from './CalComponent30min';
+import CalComponent15min from './CalComponent15min';
 
 const BookACall = () => {
   const [isCalVisible, setIsCalVisible] = useState(false);
@@ -13,7 +13,7 @@ const BookACall = () => {
     <div className='space-y-5 pb-2'>
       <h3 className='text-lg font-medium'>Book a Call</h3>
       <div onClick={handleLinkClick}>
-        <CalComponent30min isVisible={isCalVisible} />
+        <CalComponent15min isVisible={isCalVisible} />
       </div>
     </div>
   );

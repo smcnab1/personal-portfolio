@@ -27,8 +27,8 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
         openGraph={{
           type: 'article',
           article: {
-            publishedTime: project?.updated_at.toString(),
-            modifiedTime: project?.updated_at.toString(),
+            publishedTime: project?.updatedAt.toString(),
+            modifiedTime: project?.updatedAt.toString(),
             authors: ['Sam McNab'],
           },
           url: canonicalUrl,

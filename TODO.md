@@ -46,7 +46,7 @@
 ## 🐛 Known Issues
 - CMS page has "element type is invalid" errors due to import/export mismatches
 - Dashboard page has GitHub API 401 errors (missing/invalid token)
-- Some images using deprecated "onLoadingComplete" property
+- ✅ Fixed: Updated Image component to use modern "onLoad" property instead of deprecated "onLoadingComplete"
 
 ## 🚀 Quick Wins
 1. Fix CMS component imports/exports
