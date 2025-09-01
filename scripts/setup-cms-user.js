@@ -8,6 +8,11 @@ const prisma = new PrismaClient();
 async function setupCMSUser() {
   try {
     console.log('🔐 Setting up CMS user...');
+    console.log('Database URL:', process.env.DATABASE_URL ? 'Set' : 'Not set');
+    console.log(
+      'Database provider:',
+      process.env.DATABASE_URL?.includes('postgres') ? 'PostgreSQL' : 'SQLite',
+    );
 
     // Check if user already exists
     const existingUser = await prisma.cMSUser.findUnique({
@@ -56,6 +61,21 @@ async function setupCMSUser() {
     console.log('\n⚠️  IMPORTANT: Change this password after first login!');
   } catch (error) {
     console.error('❌ Error setting up CMS user:', error);
+
+    if (
+      error.message.includes('connect') ||
+      error.message.includes('DATABASE_URL')
+    ) {
+      console.log('\n💡 Database connection issue detected.');
+      console.log(
+        'Make sure your DATABASE_URL environment variable is set correctly.',
+      );
+      console.log('For local development: DATABASE_URL="file:./prisma/dev.db"');
+      console.log(
+        'For production: DATABASE_URL="postgresql://username:password@host:port/database"',
+      );
+    }
+
     process.exit(1);
   } finally {
     await prisma.$disconnect();

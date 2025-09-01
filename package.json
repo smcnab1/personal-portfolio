@@ -23,6 +23,7 @@
     "setup:cms": "node scripts/setup-cms.js",
     "setup:cms-user": "node scripts/setup-cms-user.js",
     "cms:user": "node scripts/update-cms-user.js",
+    "cms:create-postgres": "node scripts/create-postgres-user.js",
     "migrate:data": "npx tsx src/lib/cms/migrate.ts",
     "export:data": "node scripts/export-data.js"
   },
