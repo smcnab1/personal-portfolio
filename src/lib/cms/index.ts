@@ -126,7 +126,7 @@ export class CMS {
         title: project.title,
         slug: project.slug,
         description: project.description,
-        content: project.content,
+        content: project.content || undefined,
         image: project.image,
         linkDemo: project.linkDemo,
         linkGithub: project.linkGithub,
