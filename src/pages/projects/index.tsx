@@ -21,6 +21,10 @@ const ProjectsPage: NextPage = () => {
       try {
         const response = await fetch('/api/projects');
         const data = await response.json();
+        console.log('Projects API response:', data);
+        console.log('Data type:', typeof data);
+        console.log('Is array:', Array.isArray(data));
+        console.log('Data structure:', data);
         setProjects(data);
       } catch (error) {
         console.error('Failed to fetch projects:', error);
@@ -34,7 +38,7 @@ const ProjectsPage: NextPage = () => {
   }, []);
 
   const loadMore = () => setVisibleProjects((prev) => prev + 2);
-  const hasMore = visibleProjects < projects.length;
+  const hasMore = Array.isArray(projects) && visibleProjects < projects.length;
 
   if (loading) {
     return (
@@ -51,7 +55,9 @@ const ProjectsPage: NextPage = () => {
       <Container data-aos='fade-up'>
         <PageHeading title={PAGE_TITLE} description={PAGE_DESCRIPTION} />
         <Projects
-          projects={projects.slice(0, visibleProjects)}
+          projects={
+            Array.isArray(projects) ? projects.slice(0, visibleProjects) : []
+          }
           loadMore={loadMore}
           hasMore={hasMore}
         />
