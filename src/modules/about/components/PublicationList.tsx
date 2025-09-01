@@ -1,20 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import Loading from '@/common/components/elements/Loading';
+import { PublicationProps } from '@/common/types/publications';
 
 import PublicationCard from './PublicationCard';
 
-interface Publication {
+interface Publication extends PublicationProps {
   id: number;
-  title: string;
-  journal: string;
-  logo?: string;
-  location?: string;
-  location_type?: string;
-  type: string;
-  start_date: string;
-  link?: string;
-  overview: string[];
   isActive: boolean;
   sortOrder: number;
 }

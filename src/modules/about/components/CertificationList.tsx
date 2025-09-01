@@ -1,20 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import Loading from '@/common/components/elements/Loading';
+import { CertProps } from '@/common/types/certs';
 
 import CertificationCard from './CertificationCard';
 
-interface Certification {
+interface Certification extends CertProps {
   id: number;
-  membership: string;
-  organisation: string;
-  logo?: string;
-  type: string;
-  start_date: string;
-  end_date?: string;
-  industry?: string;
-  link?: string;
-  description: string[];
   isActive: boolean;
   sortOrder: number;
 }

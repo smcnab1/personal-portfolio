@@ -16,7 +16,7 @@ const ProjectCard = ({
   stacks,
   is_featured,
 }: ProjectItemProps) => {
-  const stacksArray = JSON.parse(stacks);
+  const stacksArray = stacks ? JSON.parse(stacks) : [];
 
   return (
     <Link href={`/projects/${slug}`}>
@@ -29,7 +29,7 @@ const ProjectCard = ({
         )}
         <div className='relative'>
           <Image
-            src={image}
+            src={image || '/images/placeholder.png'}
             width={400}
             height={200}
             alt={title}

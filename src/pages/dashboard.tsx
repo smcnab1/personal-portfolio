@@ -5,7 +5,6 @@ import { SWRConfig } from 'swr';
 import Container from '@/common/components/elements/Container';
 import PageHeading from '@/common/components/elements/PageHeading';
 import Dashboard from '@/modules/dashboard';
-import { getGithubUser } from '@/services/github';
 
 interface DashboardPageProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -31,15 +30,11 @@ const DashboardPage: NextPage<DashboardPageProps> = ({ fallback }) => {
 export default DashboardPage;
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const readStats = await getReadStats();
-  const githubUserPersonal = await getGithubUser('personal');
-
+  // Skip external API calls during build to prevent 401 errors
+  // Data will be fetched client-side via SWR
   return {
     props: {
-      fallback: {
-        // '/api/read-stats': readStats.data,
-        '/api/github?type=personal': githubUserPersonal?.data,
-      },
+      fallback: {},
     },
     revalidate: 1,
   };

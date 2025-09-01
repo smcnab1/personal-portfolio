@@ -41,7 +41,6 @@
     "firebase": "^12.0.0",
     "framer-motion": "^12.23.11",
     "gray-matter": "^4.0.3",
-    "moment": "^2.30.1",
     "next": "^15.4.4",
     "next-auth": "^4.24.11",
     "next-mdx-remote": "^5.0.0",

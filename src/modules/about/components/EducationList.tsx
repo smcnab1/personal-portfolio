@@ -1,19 +1,12 @@
 import { useEffect, useState } from 'react';
 
 import Loading from '@/common/components/elements/Loading';
+import { EducationProps } from '@/common/types/education';
 
 import EducationCard from './EducationCard';
 
-interface Education {
+interface Education extends EducationProps {
   id: number;
-  degree: string;
-  school: string;
-  major?: string;
-  logo?: string;
-  location?: string;
-  start_year: number;
-  end_year?: number;
-  link?: string;
   isActive: boolean;
   sortOrder: number;
 }

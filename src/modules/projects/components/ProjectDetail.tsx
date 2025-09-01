@@ -14,7 +14,7 @@ const ProjectDetail = ({
   link_github,
   content,
 }: ProjectItemProps) => {
-  const stacksArray = JSON.parse(stacks);
+  const stacksArray = stacks ? JSON.parse(stacks) : [];
 
   return (
     <div className='space-y-8'>
@@ -38,7 +38,7 @@ const ProjectDetail = ({
         />
       </div>
       <Image
-        src={image}
+        src={image || '/images/placeholder.png'}
         width={800}
         height={400}
         alt={title}

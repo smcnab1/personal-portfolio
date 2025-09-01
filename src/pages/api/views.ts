@@ -14,12 +14,12 @@ export default async function handler(
 
   if (req.method === 'GET') {
     try {
-      const contentMeta = await prisma.contentmeta.findUnique({
+      const blogPost = await prisma.blog.findUnique({
         where: { slug: slug as string },
         select: { views: true },
       });
 
-      const contentViewsCount = contentMeta?.views ?? 0;
+      const contentViewsCount = blogPost?.views ?? 0;
 
       const response: ResponseData = {
         views: contentViewsCount,

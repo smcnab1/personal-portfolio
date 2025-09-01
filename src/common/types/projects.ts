@@ -2,10 +2,10 @@ export interface ProjectItemProps {
   title: string;
   slug: string;
   description: string;
-  image: string;
-  link_demo?: string;
-  link_github?: string;
-  stacks: string;
+  image: string | null;
+  link_demo?: string | null;
+  link_github?: string | null;
+  stacks: string | null;
   content?: string;
   is_show: boolean;
   is_featured: boolean;

@@ -11,8 +11,8 @@ interface LinkComponentProps {
 
 interface ProjectLinkProps {
   title?: string;
-  link_github?: string;
-  link_demo?: string;
+  link_github?: string | null;
+  link_demo?: string | null;
 }
 
 const ProjectLink = ({ title, link_github, link_demo }: ProjectLinkProps) => {

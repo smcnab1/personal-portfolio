@@ -34,7 +34,7 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
           url: canonicalUrl,
           images: [
             {
-              url: project?.image,
+              url: project?.image || '/images/placeholder.png',
             },
           ],
           siteName: 'Blog Sam McNab',
@@ -52,7 +52,7 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
 export default ProjectsDetailPage;
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const response = await prisma.projects.findUnique({
+  const response = await prisma.project.findUnique({
     where: {
       slug: String(params?.slug),
     },
