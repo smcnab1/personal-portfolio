@@ -213,8 +213,8 @@ export class CMS {
           rendered: post.excerpt || '',
           protected: false,
         },
-        author: 1,
-        featured_media: 0,
+        author: '1',
+        featured_media: '0',
         comment_status: 'open',
         ping_status: 'open',
         sticky: false,
@@ -223,12 +223,12 @@ export class CMS {
         meta: {
           footnotes: '',
         },
-        categories: [1],
-        tags: [1],
+        categories: ['1'],
+        tags: ['1'],
         tags_list: [],
         amp_enabled: false,
         featured_image_url: '/images/placeholder.png',
-        total_views_count: post.views,
+        total_views_count: post.views.toString(),
       }));
     } catch (error) {
       console.error('Failed to fetch blog posts:', error);

@@ -68,7 +68,7 @@ export default async function handler(
       const { id, ...data } = req.body;
 
       const education = await prisma.education.update({
-        where: { id: parseInt(id) },
+        where: { id },
         data: {
           degree: data.degree,
           school: data.school,
@@ -89,17 +89,18 @@ export default async function handler(
   } else if (req.method === 'DELETE') {
     try {
       const { id, hard } = req.query;
+      const educationId = Array.isArray(id) ? id[0] : id;
 
       if (hard === 'true') {
         // Hard delete - permanently remove from database
         await prisma.education.delete({
-          where: { id: parseInt(id as string) },
+          where: { id: educationId },
         });
         res.status(200).json({ message: 'Education permanently deleted' });
       } else {
         // Soft delete - set isActive to false
         await prisma.education.update({
-          where: { id: parseInt(id as string) },
+          where: { id: educationId },
           data: { isActive: false },
         });
         res.status(200).json({ message: 'Education deleted successfully' });

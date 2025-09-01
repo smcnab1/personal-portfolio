@@ -71,7 +71,7 @@ export default async function handler(
       const { id, ...data } = req.body;
 
       const publication = await prisma.publication.update({
-        where: { id: parseInt(id) },
+        where: { id },
         data: {
           title: data.title,
           journal: data.journal,
@@ -93,17 +93,18 @@ export default async function handler(
   } else if (req.method === 'DELETE') {
     try {
       const { id, hard } = req.query;
+      const publicationId = Array.isArray(id) ? id[0] : id;
 
       if (hard === 'true') {
         // Hard delete - permanently remove from database
         await prisma.publication.delete({
-          where: { id: parseInt(id as string) },
+          where: { id: publicationId },
         });
         res.status(200).json({ message: 'Publication permanently deleted' });
       } else {
         // Soft delete - set isActive to false
         await prisma.publication.update({
-          where: { id: parseInt(id as string) },
+          where: { id: publicationId },
           data: { isActive: false },
         });
         res.status(200).json({ message: 'Publication deleted successfully' });

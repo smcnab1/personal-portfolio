@@ -36,7 +36,7 @@ export default async function handler(
       const { id, content } = req.body;
 
       const about = await prisma.about.update({
-        where: { id: parseInt(id) },
+        where: { id },
         data: { content },
       });
 

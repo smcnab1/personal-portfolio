@@ -80,7 +80,7 @@ export default async function handler(
       const { id, ...data } = req.body;
 
       const career = await prisma.career.update({
-        where: { id: parseInt(id) },
+        where: { id },
         data: {
           position: data.position,
           company: data.company,
@@ -105,17 +105,18 @@ export default async function handler(
   } else if (req.method === 'DELETE') {
     try {
       const { id, hard } = req.query;
+      const careerId = Array.isArray(id) ? id[0] : id;
 
       if (hard === 'true') {
         // Hard delete - permanently remove from database
         await prisma.career.delete({
-          where: { id: parseInt(id as string) },
+          where: { id: careerId },
         });
         res.status(200).json({ message: 'Career permanently deleted' });
       } else {
         // Soft delete - set isActive to false
         await prisma.career.update({
-          where: { id: parseInt(id as string) },
+          where: { id: careerId },
           data: { isActive: false },
         });
         res.status(200).json({ message: 'Career deleted successfully' });

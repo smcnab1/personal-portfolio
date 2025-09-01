@@ -71,7 +71,7 @@ export default async function handler(
       const { id, ...data } = req.body;
 
       const certification = await prisma.certification.update({
-        where: { id: parseInt(id) },
+        where: { id },
         data: {
           membership: data.membership,
           organisation: data.organisation,
@@ -93,17 +93,18 @@ export default async function handler(
   } else if (req.method === 'DELETE') {
     try {
       const { id, hard } = req.query;
+      const certificationId = Array.isArray(id) ? id[0] : id;
 
       if (hard === 'true') {
         // Hard delete - permanently remove from database
         await prisma.certification.delete({
-          where: { id: parseInt(id as string) },
+          where: { id: certificationId },
         });
         res.status(200).json({ message: 'Certification permanently deleted' });
       } else {
         // Soft delete - set isActive to false
         await prisma.certification.update({
-          where: { id: parseInt(id as string) },
+          where: { id: certificationId },
           data: { isActive: false },
         });
         res.status(200).json({ message: 'Certification deleted successfully' });

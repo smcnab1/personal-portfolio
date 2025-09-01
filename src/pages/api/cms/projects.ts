@@ -70,7 +70,7 @@ export default async function handler(
       const { id, ...data } = req.body;
 
       const project = await prisma.project.update({
-        where: { id: parseInt(id) },
+        where: { id },
         data: {
           title: data.title,
           slug: data.slug,
@@ -92,17 +92,18 @@ export default async function handler(
   } else if (req.method === 'DELETE') {
     try {
       const { id, hard } = req.query;
+      const projectId = Array.isArray(id) ? id[0] : id;
 
       if (hard === 'true') {
         // Hard delete - permanently remove from database
         await prisma.project.delete({
-          where: { id: parseInt(id as string) },
+          where: { id: projectId },
         });
         res.status(200).json({ message: 'Project permanently deleted' });
       } else {
         // Soft delete - set isShow to false
         await prisma.project.update({
-          where: { id: parseInt(id as string) },
+          where: { id: projectId },
           data: { isShow: false },
         });
         res.status(200).json({ message: 'Project deleted successfully' });

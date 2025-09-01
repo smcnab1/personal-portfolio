@@ -3,14 +3,14 @@ export type UserProps = {
   username: string;
   twitter_username: string;
   github_username: string;
-  user_id: number;
+  user_id: string;
   website_url: string;
   profile_image: string;
   profile_image_90: string;
 };
 
 export type BlogItemProps = {
-  id: number;
+  id: string;
   date: string;
   modified: string;
   slug: string;
@@ -28,8 +28,8 @@ export type BlogItemProps = {
     rendered: string;
     protected: boolean;
   };
-  author: number;
-  featured_media: number;
+  author: string;
+  featured_media: string;
   comment_status: string;
   ping_status: string;
   sticky: boolean;
@@ -38,27 +38,27 @@ export type BlogItemProps = {
   meta: {
     footnotes: string;
   };
-  categories: number[];
-  tags: number[];
+  categories: string[];
+  tags: string[];
   tags_list: {
-    term_id: number;
+    term_id: string;
     name: string;
     slug: string;
-    term_group: number;
-    term_taxonomy_id: number;
+    term_group: string;
+    term_taxonomy_id: string;
     taxonomy: string;
     description: string;
-    parent: number;
-    count: number;
+    parent: string;
+    count: string;
     filter: string;
   }[];
   amp_enabled: boolean;
   featured_image_url: string;
-  total_views_count: number;
+  total_views_count: string;
 };
 
 export type BlogDetailProps = {
-  id: number;
+  id: string;
   date: string;
   date_gmt: string;
   modified: string;
@@ -79,8 +79,8 @@ export type BlogDetailProps = {
     rendered: string;
     protected: boolean;
   };
-  author: number;
-  featured_media: number;
+  author: string;
+  featured_media: string;
   comment_status: string;
   ping_status: string;
   sticky: boolean;
@@ -89,18 +89,18 @@ export type BlogDetailProps = {
   meta: {
     footnotes: string;
   };
-  categories: number[];
-  tags: number[];
+  categories: string[];
+  tags: string[];
   tags_list: {
-    term_id: number;
+    term_id: string;
     name: string;
     slug: string;
-    term_group: number;
-    term_taxonomy_id: number;
+    term_group: string;
+    term_taxonomy_id: string;
     taxonomy: string;
     description: string;
-    parent: number;
-    count: number;
+    parent: string;
+    count: string;
     filter: string;
   }[];
   amp_enabled: boolean;
@@ -113,11 +113,11 @@ export type BlogDetailProps = {
     href: string;
   };
   version_history: {
-    count: number;
+    count: string;
     href: string;
   };
   predecessor_version: {
-    id: number;
+    id: string;
     href: string;
   };
   wp_featuredmedia: {
@@ -137,7 +137,7 @@ export type BlogDetailProps = {
     href: string;
     templated: true;
   }[];
-  total_views_count: number;
+  total_views_count: string;
 };
 
 export type BlogProps = {
