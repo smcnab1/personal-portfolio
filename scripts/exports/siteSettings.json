@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "key": "site_name",
+    "value": "Sam McNab",
+    "description": "Site name",
+    "type": "string",
+    "createdAt": "2025-09-01T08:31:08.228Z",
+    "updatedAt": "2025-09-01T08:31:08.228Z"
+  },
+  {
+    "id": 2,
+    "key": "site_description",
+    "value": "Personal portfolio of Sam McNab",
+    "description": "Site description",
+    "type": "string",
+    "createdAt": "2025-09-01T08:31:08.229Z",
+    "updatedAt": "2025-09-01T08:31:08.229Z"
+  },
+  {
+    "id": 3,
+    "key": "contact_email",
+    "value": "sam@sammcnab.co.uk",
+    "description": "Contact email",
+    "type": "string",
+    "createdAt": "2025-09-01T08:31:08.230Z",
+    "updatedAt": "2025-09-01T08:31:08.230Z"
+  },
+  {
+    "id": 4,
+    "key": "github_url",
+    "value": "https://github.com/sammcnab",
+    "description": "GitHub URL",
+    "type": "string",
+    "createdAt": "2025-09-01T08:31:08.230Z",
+    "updatedAt": "2025-09-01T08:31:08.230Z"
+  },
+  {
+    "id": 5,
+    "key": "linkedin_url",
+    "value": "",
+    "description": "LinkedIn URL",
+    "type": "string",
+    "createdAt": "2025-09-01T08:31:08.231Z",
+    "updatedAt": "2025-09-01T08:31:08.231Z"
+  },
+  {
+    "id": 6,
+    "key": "twitter_url",
+    "value": "",
+    "description": "Twitter URL",
+    "type": "string",
+    "createdAt": "2025-09-01T08:31:08.232Z",
+    "updatedAt": "2025-09-01T08:31:08.232Z"
+  },
+  {
+    "id": 7,
+    "key": "enable_blog",
+    "value": "true",
+    "description": "Enable blog section",
+    "type": "boolean",
+    "createdAt": "2025-09-01T08:31:08.232Z",
+    "updatedAt": "2025-09-01T08:31:08.232Z"
+  },
+  {
+    "id": 8,
+    "key": "enable_projects",
+    "value": "true",
+    "description": "Enable projects section",
+    "type": "boolean",
+    "createdAt": "2025-09-01T08:31:08.233Z",
+    "updatedAt": "2025-09-01T08:31:08.233Z"
+  }
+]

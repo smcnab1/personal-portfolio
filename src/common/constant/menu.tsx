@@ -9,7 +9,6 @@ import {
   FiBookOpen as LearnIcon,
   FiBriefcase as LegalIcon,
   FiCoffee as ProjectIcon,
-  FiCpu as DashboardIcon,
   FiPieChart as AnalyticsIcon,
   FiPocket as HomeIcon,
   FiRss as BlogIcon,
@@ -32,15 +31,7 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: 'Pages: Home',
     type: 'Pages',
   },
-  {
-    title: 'Dashboard',
-    href: '/dashboard',
-    icon: <DashboardIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Dashboard',
-    type: 'Pages',
-  },
+
   {
     title: 'Projects',
     href: '/projects',
