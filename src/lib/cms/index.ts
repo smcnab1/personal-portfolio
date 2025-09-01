@@ -122,16 +122,20 @@ export class CMS {
       });
 
       return projects.map((project) => ({
+        id: project.id,
         title: project.title,
         slug: project.slug,
         description: project.description,
+        content: project.content,
         image: project.image,
-        link_demo: project.linkDemo,
-        link_github: project.linkGithub,
+        linkDemo: project.linkDemo,
+        linkGithub: project.linkGithub,
         stacks: project.stacks,
-        is_show: project.isShow,
-        is_featured: project.isFeatured,
-        updated_at: project.updatedAt,
+        isShow: project.isShow,
+        isFeatured: project.isFeatured,
+        createdAt: project.createdAt,
+        updatedAt: project.updatedAt,
+        sortOrder: project.sortOrder,
       }));
     } catch (error) {
       console.error('Failed to fetch projects:', error);
