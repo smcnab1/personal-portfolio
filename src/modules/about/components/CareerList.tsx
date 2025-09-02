@@ -34,15 +34,16 @@ const CareerList = () => {
     try {
       const response = await fetch('/api/cms/careers');
       const data = await response.json();
-      // Filter active careers and sort by start_date (newest first), then by sortOrder
+      // Filter active careers and sort by sortOrder first, then by start_date (newest first)
       const activeCareers = data
         .filter((career: Career) => career.isActive)
         .sort((a: Career, b: Career) => {
+          if (a.sortOrder !== b.sortOrder) {
+            return a.sortOrder - b.sortOrder;
+          }
           const dateA = new Date(a.start_date);
           const dateB = new Date(b.start_date);
-          if (dateA > dateB) return -1;
-          if (dateA < dateB) return 1;
-          return a.sortOrder - b.sortOrder;
+          return dateB.getTime() - dateA.getTime();
         });
       setCareers(activeCareers);
     } catch (error) {

@@ -23,15 +23,16 @@ const PublicationList = () => {
     try {
       const response = await fetch('/api/cms/publications');
       const data = await response.json();
-      // Filter active publications and sort by start_date (newest first), then by sortOrder
+      // Filter active publications and sort by sortOrder first, then by start_date (newest first)
       const activePublications = data
         .filter((publication: Publication) => publication.isActive)
         .sort((a: Publication, b: Publication) => {
+          if (a.sortOrder !== b.sortOrder) {
+            return a.sortOrder - b.sortOrder;
+          }
           const dateA = new Date(a.start_date);
           const dateB = new Date(b.start_date);
-          if (dateA > dateB) return -1;
-          if (dateA < dateB) return 1;
-          return a.sortOrder - b.sortOrder;
+          return dateB.getTime() - dateA.getTime();
         });
       setPublications(activePublications);
     } catch (error) {

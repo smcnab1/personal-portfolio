@@ -23,15 +23,16 @@ const CertificationList = () => {
     try {
       const response = await fetch('/api/cms/certifications');
       const data = await response.json();
-      // Filter active certifications and sort by start_date (newest first), then by sortOrder
+      // Filter active certifications and sort by sortOrder first, then by start_date (newest first)
       const activeCertifications = data
         .filter((certification: Certification) => certification.isActive)
         .sort((a: Certification, b: Certification) => {
+          if (a.sortOrder !== b.sortOrder) {
+            return a.sortOrder - b.sortOrder;
+          }
           const dateA = new Date(a.start_date);
           const dateB = new Date(b.start_date);
-          if (dateA > dateB) return -1;
-          if (dateA < dateB) return 1;
-          return a.sortOrder - b.sortOrder;
+          return dateB.getTime() - dateA.getTime();
         });
       setCertifications(activeCertifications);
     } catch (error) {

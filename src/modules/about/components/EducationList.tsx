@@ -23,13 +23,14 @@ const EducationList = () => {
     try {
       const response = await fetch('/api/cms/education');
       const data = await response.json();
-      // Filter active educations and sort by start_year (newest first), then by sortOrder
+      // Filter active educations and sort by sortOrder first, then by start_year (newest first)
       const activeEducations = data
         .filter((education: Education) => education.isActive)
         .sort((a: Education, b: Education) => {
-          if (a.start_year > b.start_year) return -1;
-          if (a.start_year < b.start_year) return 1;
-          return a.sortOrder - b.sortOrder;
+          if (a.sortOrder !== b.sortOrder) {
+            return a.sortOrder - b.sortOrder;
+          }
+          return b.start_year - a.start_year;
         });
       setEducations(activeEducations);
     } catch (error) {
