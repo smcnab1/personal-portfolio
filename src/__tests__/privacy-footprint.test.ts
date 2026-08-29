@@ -70,7 +70,10 @@ describe('privacy-focused public profile', () => {
     'src/pages/learn/index.tsx',
     'src/pages/auth/signin.tsx',
     'src/pages/cms.tsx',
+    'src/common/libs/prisma.ts',
+    'prisma/schema.prisma',
     'prisma/dev.db',
+    'scripts/setup-cms.js',
     'scripts/exports/complete-export.json',
   ])('removes %s from the current public tree', (file) => {
     expect(fs.existsSync(path.join(repositoryRoot, file))).toBe(false);
