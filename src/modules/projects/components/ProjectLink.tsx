@@ -36,7 +36,7 @@ const ProjectLink = ({ title, linkGithub, linkDemo }: ProjectLinkProps) => {
       {linkGithub && (
         <LinkComponent
           url={linkGithub}
-          text='Source Code'
+          text='GitHub'
           icon={<GithubIcon size={22} />}
         />
       )}
