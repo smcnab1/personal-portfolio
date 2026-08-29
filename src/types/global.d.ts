@@ -1,6 +1,6 @@
 declare global {
   interface Window {
-    Cal?: any;
+    Cal?: unknown;
   }
 }
 
