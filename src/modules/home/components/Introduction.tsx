@@ -9,7 +9,7 @@ const Introduction = () => {
         <div className='space-y-4'>
           <ul className='ml-5 flex list-disc flex-col gap-1 text-neutral-700 dark:text-neutral-400 lg:flex-row lg:gap-10'>
             <li>
-              Based in Buckinghamshire, England <span className='ml-1'>🇬🇧</span>
+              Based in South East England <span className='ml-1'>🇬🇧</span>
             </li>
             <li>Working remotely and across the UK</li>
           </ul>
@@ -17,7 +17,7 @@ const Introduction = () => {
       </div>
 
       <p className='mt-6 leading-[1.8] text-neutral-800 dark:text-neutral-300 md:leading-loose'>
-      I&apos;m a University Lecturer, Healthcare Simulationist and Registered Paramedic from Edinburgh, Scotland, 
+      I&apos;m a University Lecturer, Healthcare Simulationist and Registered Paramedic, 
       working in healthcare eduction. I have recently been dabbling further in IT 
       & Development whilst working in my role with Immersive Technologies & Simulation.</p>
     </section>
