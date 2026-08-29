@@ -88,13 +88,13 @@ export default NextAuth({
           console.log('Password validation result:', isValid);
 
           return isValid
-            ? ({
+            ? {
                 id: user.id,
                 email: user.email,
                 name: user.name,
                 role: user.role,
                 provider: 'credentials',
-              } as any)
+              }
             : null;
         } catch (error) {
           console.error('❌ Auth error:', error);
