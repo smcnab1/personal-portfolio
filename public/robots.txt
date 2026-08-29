@@ -1,9 +1,12 @@
 # *
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /auth/
+Disallow: /cms
 
 # Host
-Host: https://www.sammcnab.co.uk
+Host: https://sammcnab.co.uk
 
 # Sitemaps
-Sitemap: https://www.sammcnab.co.uk/sitemap.xml
+Sitemap: https://sammcnab.co.uk/sitemap.xml

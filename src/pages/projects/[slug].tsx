@@ -1,10 +1,10 @@
-import { GetServerSideProps, NextPage } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { NextSeo } from 'next-seo';
 
 import BackButton from '@/common/components/elements/BackButton';
 import Container from '@/common/components/elements/Container';
 import PageHeading from '@/common/components/elements/PageHeading';
-import prisma from '@/common/libs/prisma';
+import { PROJECTS } from '@/common/constant/projects';
 import { ProjectItemProps } from '@/common/types/projects';
 import ProjectDetail from '@/modules/projects/components/ProjectDetail';
 
@@ -16,7 +16,7 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
   const PAGE_TITLE = project?.title;
   const PAGE_DESCRIPTION = project?.description;
 
-  const canonicalUrl = `https://sammcnab.co.uk/project/${project?.slug}`;
+  const canonicalUrl = `https://sammcnab.co.uk/projects/${project?.slug}`;
 
   return (
     <>
@@ -37,7 +37,7 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
               url: project?.image || '/images/placeholder.png',
             },
           ],
-          siteName: 'Blog Sam McNab',
+          siteName: 'Sam McNab',
         }}
       />
       <Container data-aos='fade-up'>
@@ -51,25 +51,23 @@ const ProjectsDetailPage: NextPage<ProjectsDetailPageProps> = ({ project }) => {
 
 export default ProjectsDetailPage;
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const response = await prisma.project.findUnique({
-    where: {
-      slug: String(params?.slug),
-    },
-  });
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: PROJECTS.filter((project) => project.isShow).map((project) => ({
+    params: { slug: project.slug },
+  })),
+  fallback: false,
+});
 
-  if (response === null) {
-    return {
-      redirect: {
-        destination: '/404',
-        permanent: false,
-      },
-    };
-  }
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const project = PROJECTS.find(
+    (item) => item.isShow && item.slug === String(params?.slug),
+  );
+
+  if (!project) return { notFound: true };
 
   return {
     props: {
-      project: JSON.parse(JSON.stringify(response)),
+      project: JSON.parse(JSON.stringify(project)),
     },
   };
 };

@@ -3,19 +3,13 @@ import {
   BsEnvelopeAtFill as EmailIcon,
   BsGithub as GithubIcon,
   BsLinkedin as LinkedinIcon,
-  BsTwitterX as TwitterIcon,
 } from 'react-icons/bs';
 import {
-  FiBookOpen as LearnIcon,
   FiBriefcase as LegalIcon,
   FiCoffee as ProjectIcon,
-  FiPieChart as AnalyticsIcon,
   FiPocket as HomeIcon,
-  FiRss as BlogIcon,
   FiUser as ProfileIcon,
 } from 'react-icons/fi';
-import { PiChatCircleDotsBold as ChatIcon } from 'react-icons/pi';
-import { SiJavascript, SiOrcid } from 'react-icons/si';
 
 import { MenuItemProps } from '../types/menu';
 
@@ -59,15 +53,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     type: 'Pages',
   },
   {
-    title: 'Guestbook',
-    href: '/guestbook',
-    icon: <ChatIcon size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: 'Pages: Chat',
-    type: 'Pages',
-  },
-  {
     title: 'Back Matter',
     href: '/legal',
     icon: <LegalIcon size={iconSize} />,
@@ -93,42 +78,22 @@ export const SOCIAL_MEDIA: MenuItemProps[] = [
   },
 
   {
-    title: 'Linkedin',
+    title: 'LinkedIn',
     href: 'https://www.linkedin.com/in/sammcnab/',
     icon: <LinkedinIcon size={iconSize} />,
     isShow: true,
     isExternal: true,
-    eventName: 'Social: Linkedin',
+    eventName: 'Social: LinkedIn',
     className: '!bg-blue-500 border border dark:border-neutral-700',
     type: 'Link',
   },
   {
-    title: 'X',
-    href: 'https://x.com/sammcnab',
-    icon: <TwitterIcon size={iconSize} />,
-    isShow: true,
-    isExternal: true,
-    eventName: 'Social: X',
-    className: '!bg-blue-500 border border dark:border-neutral-700',
-    type: 'Link',
-  },
-  {
-    title: 'Github',
+    title: 'GitHub',
     href: 'https://github.com/smcnab1',
     icon: <GithubIcon size={iconSize} />,
     isShow: true,
     isExternal: true,
     eventName: 'Social: Github',
-    className: '!bg-black border border dark:border-neutral-700',
-    type: 'Link',
-  },
-  {
-    title: 'ORCID',
-    href: 'https://orcid.org/0009-0009-4568-9853',
-    icon: <SiOrcid size={iconSize} />,
-    isShow: true,
-    isExternal: true,
-    eventName: 'Social: ORCID',
     className: '!bg-black border border dark:border-neutral-700',
     type: 'Link',
   },

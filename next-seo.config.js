@@ -1,7 +1,7 @@
 const canonicalUrl = 'https://sammcnab.co.uk';
-const metaImage = 'https://sammcnab.co.uk/my-avatar.png';
+const metaImage = 'https://sammcnab.co.uk/images/my-avatar.png';
 const metaDescription =
-  'Registered Paramedic, Coach, and Educator. I write about my experiences in healthcare, technology, and education.';
+  'University Lecturer, Registered Paramedic and Healthcare Simulationist specialising in immersive technologies.';
 
 const defaultSEOConfig = {
   defaultTitle: 'Sam McNab - Personal Website',
@@ -33,11 +33,6 @@ const defaultSEOConfig = {
       },
     ],
     site_name: 'sammcnab.co.uk',
-  },
-  twitter: {
-    handle: '@handle',
-    site: '@site',
-    cardType: 'summary_large_image',
   },
 };
 

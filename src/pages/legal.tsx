@@ -6,8 +6,7 @@ import PageHeading from '@/common/components/elements/PageHeading';
 import Legal from '@/modules/legal';
 
 const PAGE_TITLE = 'Legal';
-const PAGE_DESCRIPTION =
-  'Legal information about this website and my work, including terms of service and privacy policy.';
+const PAGE_DESCRIPTION = 'Privacy and cookie information for this website.';
 
 const LegalPage: NextPage = () => {
   return (

@@ -7,7 +7,7 @@ import Contact from '@/modules/contact';
 
 const PAGE_TITLE = 'Contact';
 const PAGE_DESCRIPTION =
-  "Feel free to get in touch and let's have a discussion about how we can work together.";
+  'Use one of the professional contact links below to get in touch.';
 
 const ContactPage: NextPage = () => {
   return (

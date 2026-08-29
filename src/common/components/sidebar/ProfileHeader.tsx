@@ -35,9 +35,14 @@ const ProfileHeader = ({ expandMenu, imageSize }: ProfileHeaderProps) => {
           </Link>
           <VerifiedIcon size={18} className='text-blue-400' />
         </div>
-        <div className='hidden text-[15px] text-neutral-600 transition-all duration-300 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400 lg:flex'>
-          @smcnab1
-        </div>
+        <Link
+          href='https://github.com/smcnab1'
+          target='_blank'
+          rel='noopener noreferrer'
+          className='hidden text-[15px] text-neutral-600 transition-all duration-300 hover:text-neutral-700 dark:text-neutral-500 dark:hover:text-neutral-400 lg:flex'
+        >
+          GitHub
+        </Link>
       </>
     </div>
   );

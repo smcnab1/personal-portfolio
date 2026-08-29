@@ -7,7 +7,7 @@ import About from '@/modules/about';
 
 const PAGE_TITLE = 'About';
 const PAGE_DESCRIPTION =
-  'An insightful glimpse into who I am, what I do, and what I aspire to be.';
+  'University Lecturer, Registered Paramedic and Healthcare Simulationist specialising in immersive technologies.';
 
 const AboutPage: NextPage = () => {
   return (
