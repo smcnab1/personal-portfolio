@@ -54,6 +54,16 @@ describe('privacy-focused public profile', () => {
     expect(PROJECTS.filter((project) => project.isShow)).toHaveLength(2);
   });
 
+  it('pins generated sitemap URLs to the working apex domain', () => {
+    const sitemapConfig = fs.readFileSync(
+      path.join(repositoryRoot, 'next-sitemap.config.js'),
+      'utf8',
+    );
+
+    expect(sitemapConfig).toContain("siteUrl: 'https://sammcnab.co.uk'");
+    expect(sitemapConfig).not.toContain('process.env.SITE_URL');
+  });
+
   it.each([
     'src/pages/blog/index.tsx',
     'src/pages/guestbook.tsx',
