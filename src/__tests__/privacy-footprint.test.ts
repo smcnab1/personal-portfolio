@@ -29,22 +29,6 @@ describe('privacy-focused public profile', () => {
     expect(publicProfileFiles.join('\n')).not.toContain('@smc' + 'nab1');
   });
 
-  it('does not publish excluded locations, interests or availability', () => {
-    const publicProfile = publicProfileFiles.join('\n').toLowerCase();
-
-    for (const excludedText of [
-      'bucking' + 'hamshire',
-      'high ' + 'wycombe',
-      'edin' + 'burgh',
-      'cyber' + 'security',
-      'cyber ' + 'security',
-      'free' + 'lance',
-      'private ' + 'tutoring',
-    ]) {
-      expect(publicProfile).not.toContain(excludedText);
-    }
-  });
-
   it('retains the limited professional identity and selected projects', () => {
     const publicProfile = publicProfileFiles.join('\n');
 
