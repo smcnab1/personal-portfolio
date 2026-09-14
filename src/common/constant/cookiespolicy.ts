@@ -10,5 +10,5 @@ export const COOKIESPOLICY = `
   <p>You can clear stored preferences and restrict browser storage through your browser settings. Some presentation preferences may then reset between visits.</p>
 
   <p><strong>Contact:</strong></p>
-  <p>For questions about this policy, email <a href="mailto:legal@sammcnab.co.uk">legal@sammcnab.co.uk</a>.</p>
+  <p>For questions about this policy, get in touch via <a href="https://sammcnab.co.uk/contact">sammcnab.co.uk/contact</a>.</p>
 `;

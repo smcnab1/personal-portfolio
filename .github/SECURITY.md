@@ -1,7 +1,8 @@
 # Security Policy
+
 ## Reporting a Vulnerability
 
-If you have identified a security vulnerability in system or product please email `legal@sammcnab.co.uk` with your findings. We strongly recommend using our `PGP key` to prevent this information from falling into the wrong hands.
+If you have identified a security vulnerability in system or product please get in touch via [sammcnab.co.uk/contact](https://sammcnab.co.uk/contact) with your findings. We strongly recommend using our `PGP key` to prevent this information from falling into the wrong hands.
 
 ### Disclosure Policy
 

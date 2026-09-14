@@ -47,17 +47,19 @@ _Last Updated 16 June 2024_
   - [License](#license)
 
 <!-- tocstop -->
-  
+
 </details>
 
 <!-- ABOUT THE PROJECT -->
+
 ## About The Project
+
 <div align="center">
   <a href="https://github.com/smcnab1/personal-portfolio">
     <img src="https://i.imgur.com/JxSX3JT.png" alt="Logo" width="100%" height="auto">
   </a>
   </div>
-  
+
 This repository serves as the boilerplate for my personal portfolio which is hosted on Vercel.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -79,6 +81,7 @@ This repository serves as the boilerplate for my personal portfolio which is hos
 ## Back Matter
 
 <!-- ROADMAP -->
+
 ### Roadmap
 
 - [ ] Finalise Documentation.
@@ -124,8 +127,6 @@ This project is licensed under the [MIT License](LICENSE.md).
 [license-url]: https://github.com/smcnab1/personal-portfolio/blob/master/LICENSE.md
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/sammcnab/
-[email-badge]: https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white
-[email-url]: mailto:sam@sammcnab.co.uk
 [git-badge]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
 [git-url]: https://github.com/smcnab1
 [kofi-badge]: https://ko-fi.com/img/githubbutton_sm.svg

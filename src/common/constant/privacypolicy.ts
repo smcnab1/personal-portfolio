@@ -13,5 +13,5 @@ export const PRIVACYPOLICY = `
   <p>Links to GitHub, LinkedIn and email services are governed by those providers' own privacy terms.</p>
 
   <p><strong>Contact:</strong></p>
-  <p>For privacy questions, email <a href="mailto:legal@sammcnab.co.uk">legal@sammcnab.co.uk</a>.</p>
+  <p>For privacy questions, visit <a href="https://sammcnab.co.uk/contact">sammcnab.co.uk/contact</a>.</p>
 `;
